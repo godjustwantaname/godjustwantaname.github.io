@@ -1,0 +1,2145 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Personal Blog by Sheldon">
+      
+      
+        <meta name="author" content="jialecai">
+      
+      
+        <link rel="canonical" href="https://godjustwantaname.github.io/electron-tutorials/01-electron-vscode/">
+      
+      
+        <link rel="prev" href="../00-electron-init/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>VS Code 标杆 - Harmony</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+  
+  
+  
+  
+  <style>:root{--md-annotation-icon:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M22%2012a10%2010%200%200%201-10%2010A10%2010%200%200%201%202%2012%2010%2010%200%200%201%2012%202a10%2010%200%200%201%2010%2010M6%2013h8l-3.5%203.5%201.42%201.42L17.84%2012l-5.92-5.92L10.5%207.5%2014%2011H6z%22/%3E%3C/svg%3E');}</style>
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#code-oss-vs-codeelectron-4383" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Harmony" class="md-header__button md-logo" aria-label="Harmony" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Harmony
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              VS Code 标杆
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/godjustwantaname.github.io/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Harmony" class="md-nav__button md-logo" aria-label="Harmony" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Harmony
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/godjustwantaname.github.io/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Handbook
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Handbook
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../handbook/markdown/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Markdown
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../handbook/powershell/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Powershell
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../handbook/docker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../handbook/git/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../handbook/wsl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WSL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../handbook/uv/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UV
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Electron Tutorials
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Electron Tutorials
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-electron-init/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Electron 初始化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VS Code 标杆
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VS Code 标杆
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 一张图看顶层
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 顶层目录的职责
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-srcvs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. src/vs 的分层
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. src/vs 的分层">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 目标环境目录
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-contribution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 contribution 模型
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-electron" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Electron 进程模型
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 内建扩展
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 构建、版本与供应链
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. 构建、版本与供应链">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-electron" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Electron 版本的实际来源
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-node" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Node 版本
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-npm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 npm 与多安装根
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 打包
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 测试与开发工作流
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Agent 与扩展生态
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-electron-pnpm-12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. 对 Electron 项目与 pnpm 12 的启示
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. 关键子树索引
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. 代码阅读顺序
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. 开发文档：分布与阅读顺序
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. 开发文档：分布与阅读顺序">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#121" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.1 文档分布
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#122" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.2 推荐阅读顺序
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12.2 推荐阅读顺序">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#0-14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第 0 层：定位（1–4）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1-510" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第 1 层：架构与编码契约（5–10）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-1122" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第 2 层：开发环境、构建与测试（11–22）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-2336" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第 3 层：核心子系统（23–36）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-ui-3743" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第 4 层：UI 与功能子系统（37–43）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-4446" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第 5 层：扩展开发（44–46）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-agent-4751" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第 6 层：Agent 工作流（47–51）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第 7 层：高级与外围（按需）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#123-27-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.3 27 篇 instructions 的完整分组
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#124-50-skills" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.4 50 个 skills 的完整分组
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#125" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.5 不纳入阅读顺序的文档
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#126" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.6 与文档同读的版本文件
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 一张图看顶层
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 顶层目录的职责
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-srcvs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. src/vs 的分层
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. src/vs 的分层">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 目标环境目录
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-contribution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 contribution 模型
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-electron" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Electron 进程模型
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 内建扩展
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 构建、版本与供应链
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. 构建、版本与供应链">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-electron" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Electron 版本的实际来源
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-node" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Node 版本
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-npm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 npm 与多安装根
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 打包
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 测试与开发工作流
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Agent 与扩展生态
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-electron-pnpm-12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. 对 Electron 项目与 pnpm 12 的启示
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. 关键子树索引
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. 代码阅读顺序
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. 开发文档：分布与阅读顺序
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. 开发文档：分布与阅读顺序">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#121" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.1 文档分布
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#122" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.2 推荐阅读顺序
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12.2 推荐阅读顺序">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#0-14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第 0 层：定位（1–4）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1-510" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第 1 层：架构与编码契约（5–10）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-1122" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第 2 层：开发环境、构建与测试（11–22）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-2336" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第 3 层：核心子系统（23–36）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-ui-3743" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第 4 层：UI 与功能子系统（37–43）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-4446" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第 5 层：扩展开发（44–46）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-agent-4751" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第 6 层：Agent 工作流（47–51）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第 7 层：高级与外围（按需）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#123-27-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.3 27 篇 instructions 的完整分组
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#124-50-skills" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.4 50 个 skills 的完整分组
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#125" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.5 不纳入阅读顺序的文档
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#126" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.6 与文档同读的版本文件
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="code-oss-vs-codeelectron-4383">Code OSS / VS Code：Electron 43.8.3 的工业级目录与文档索引</h1>
+<blockquote>
+<p>参考 checkout：Code OSS <code>1.145.0</code>，commit <code>d0adb05e</code>；Electron <code>43.8.3</code>，Node <code>24.22.1</code>。作者仓库中的参考路径为 <code>.reference/vscode</code>，下文路径相对该 Code OSS 仓库；前置教程见 <a href="../00-electron-init/">00-electron-init.md</a>。</p>
+</blockquote>
+<p>这篇索引分成两部分：第一部分看 Code OSS / VS Code 的目录树、分层、进程模型与构建链；第二部分按阅读顺序进入仓库内开发文档、instructions 与 skills。它适合在读完初始化教程后，继续理解一个工业级 Electron 项目如何组织代码、构建与测试。</p>
+<p>下面的数字来自参考 checkout 的 <code>find</code>、<code>du</code>、<code>tree</code> 和 <code>git ls-files</code> 统计；目录树排除了 <code>.git</code> 与 <code>node_modules</code>。</p>
+<h2 id="1">1. 一张图看顶层</h2>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>code-oss/
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>├── src/                  # 231M，应用 TypeScript 源码
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>│   ├── vs/               # 核心分层：base → platform → editor → workbench → sessions
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>│   ├── vscode-dts/       # 扩展 API 声明，含 185 个 proposed API
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>│   └── typings/          # 全局类型补充
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>├── extensions/           # 108M，96 个内建扩展目录，95 个 package.json
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>├── build/                # 15M，构建、打包、CI、checksums、平台脚本
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>├── resources/            # 11M，各平台图标、桌面文件、安装器资源
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>├── cli/                  # 1.9M，Rust 编写的 code CLI
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>├── remote/               # 120K，远程与 Web 端的依赖清单
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>├── test/                 # 2.4M，单元、集成、冒烟、自动化、Monaco 测试
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>├── scripts/              # 844K，开发启动与测试脚本
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>├── .github/              # 2.2M，CI workflow、指令、技能与 PR 模板
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>├── .devcontainer/        # 32K，Node 24-bookworm 开发容器
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>├── .vscode/              # 编辑器任务、调试配置、自举扩展
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>├── .agents/              # AI agent 启动技能
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>├── copilot_shim/         # Rust 编写的 Copilot 运行时 shim
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>├── package.json          # 1.145.0，npm 脚本与 allowScripts
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>├── package-lock.json     # lockfileVersion 3，1,670 个包条目
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>├── .npmrc                # Electron target="43.8.3"，runtime="electron"
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>├── .nvmrc                # 24.22.1
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>├── product.json          # Code - OSS 品牌、下载源、制品 feed
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>├── gulpfile.mjs          # 构建任务入口
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>└── README.md / CONTRIBUTING.md / SECURITY.md / AGENTS.md
+</span></code></pre></div>
+<p><code>code-oss/</code> 是示意根目录，实际请替换成你的 checkout 路径。</p>
+<p>仓库共有 21,284 个受 Git 管理的文件。<code>src/vs</code> 本身有 2,842 个目录、12,994 个文件，是绝对的主体；<code>extensions/</code> 有 1,573 个子目录、6,692 个文件；<code>build/</code> 有 65 个目录、507 个文件。这个体量让应用源码、内建扩展、构建脚本、平台资源、测试各自拥有顶层目录，边界清晰。</p>
+<h2 id="2">2. 顶层目录的职责</h2>
+<table>
+<thead>
+<tr>
+<th>路径</th>
+<th>职责</th>
+<th>阅读入口</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>src/vs/</code></td>
+<td>编辑器与工作台的核心实现</td>
+<td><code>src/vs/workbench/workbench.desktop.main.ts</code></td>
+</tr>
+<tr>
+<td><code>src/vscode-dts/</code></td>
+<td>扩展 API 的公开与 proposed 类型声明</td>
+<td><code>vscode.d.ts</code>、<code>vscode.proposed.*.d.ts</code></td>
+</tr>
+<tr>
+<td><code>extensions/</code></td>
+<td>随应用发布的内建扩展</td>
+<td><code>extensions/git/package.json</code>、<code>extensions/typescript-language-features/</code></td>
+</tr>
+<tr>
+<td><code>build/</code></td>
+<td>编译、下载、打包、签名、发布、校验</td>
+<td><code>build/gulpfile.vscode.ts</code>、<code>build/lib/electron.ts</code></td>
+</tr>
+<tr>
+<td><code>resources/</code></td>
+<td>Windows/macOS/Linux/Server 的图标与安装资源</td>
+<td><code>resources/linux/code.desktop</code></td>
+</tr>
+<tr>
+<td><code>cli/</code></td>
+<td>独立 Rust CLI，负责 <code>code</code> 命令、隧道、桌面启动</td>
+<td><code>cli/Cargo.toml</code>、<code>cli/src/commands.rs</code></td>
+</tr>
+<tr>
+<td><code>remote/</code></td>
+<td>远程与 Web 端的依赖清单；源码在 <code>src/vs/server</code> 与 <code>src/vs/code/browser</code></td>
+<td><code>remote/package.json</code></td>
+</tr>
+<tr>
+<td><code>test/</code></td>
+<td>多层级测试与测试基础设施</td>
+<td><code>test/README.md</code></td>
+</tr>
+<tr>
+<td><code>scripts/</code></td>
+<td>开发启动、测试、性能与辅助脚本</td>
+<td><code>scripts/code.sh</code>、<code>scripts/test.sh</code></td>
+</tr>
+<tr>
+<td><code>.github/</code></td>
+<td>PR CI、安全扫描、agent 指令与技能</td>
+<td><code>.github/workflows/pr.yml</code>、<code>.github/instructions/</code></td>
+</tr>
+<tr>
+<td><code>.devcontainer/</code></td>
+<td>可复现的开发容器</td>
+<td><code>.devcontainer/Dockerfile</code></td>
+</tr>
+<tr>
+<td><code>product.json</code></td>
+<td>产品名、协议、下载 feed、内建扩展清单</td>
+<td><code>product.json</code></td>
+</tr>
+</tbody>
+</table>
+<p><code>remote/</code> 只放依赖清单，容易误读。远程服务器的实际 TypeScript 源码在 <code>src/vs/server/node/</code>，Web 端的启动代码在 <code>src/vs/code/browser/</code> 与 <code>src/vs/workbench/workbench.web.main.ts</code>。<code>remote/web/package.json</code> 是 Web 客户端的依赖根。<code>cli/</code> 则是单独的 Rust 工程，与 Electron 主进程通过命令行和 RPC 协作。</p>
+<h2 id="3-srcvs">3. <code>src/vs</code> 的分层</h2>
+<p><code>.github/instructions/source-code-organization.instructions.md</code> 给出了权威的分层顺序：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>base → platform → editor → workbench
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>                              ├── code（Electron/桌面入口）
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>                              ├── server（远程入口）
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>                              └── sessions（Agents Window，可导入 workbench）
+</span></code></pre></div>
+<p><code>code</code> 与 <code>server</code> 是应用入口层；<code>sessions</code> 位于 <code>workbench</code> 之上，可以导入 <code>workbench</code> 及以下各层，<code>workbench</code> 不能反向导入 <code>sessions</code>。</p>
+<table>
+<thead>
+<tr>
+<th>层</th>
+<th>规模（参考 checkout）</th>
+<th>角色</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>src/vs/base/</code></td>
+<td>17M，563 文件</td>
+<td>通用工具、事件、生命周期、URI、DOM、IPC 基础设施</td>
+</tr>
+<tr>
+<td><code>src/vs/platform/</code></td>
+<td>67M，4,329 文件，112 个服务目录</td>
+<td>依赖注入与跨层服务：文件、配置、存储、扩展管理、终端、远程、遥测</td>
+</tr>
+<tr>
+<td><code>src/vs/editor/</code></td>
+<td>16M，1,308 文件</td>
+<td>Monaco 编辑器核心、语言特性、独立编辑器入口</td>
+</tr>
+<tr>
+<td><code>src/vs/workbench/</code></td>
+<td>104M，5,545 文件，102 个 feature contribution</td>
+<td>工作台 UI、布局、服务、扩展 API 宿主</td>
+</tr>
+<tr>
+<td><code>src/vs/code/</code></td>
+<td>600K，27 文件</td>
+<td>Electron 主进程、渲染进程引导、共享进程、Node CLI 入口</td>
+</tr>
+<tr>
+<td><code>src/vs/server/</code></td>
+<td>380K，30 文件</td>
+<td>远程开发服务器入口与远程扩展宿主</td>
+</tr>
+<tr>
+<td><code>src/vs/sessions/</code></td>
+<td>26M，1,189 文件，35 个 contribution</td>
+<td>Agent Sessions 窗口，位于 workbench 之上</td>
+</tr>
+</tbody>
+</table>
+<p><code>code</code> 层的文件数很少，这是有意为之：Electron 主进程只负责应用生命周期、窗口、服务和进程编排，真正的编辑器与工作台能力放在 <code>platform</code>、<code>editor</code>、<code>workbench</code>。<code>src/vs/code/electron-main/main.ts</code> 是主进程入口，<code>app.ts</code> 里的 <code>CodeApplication</code> 负责启动服务、创建窗口和 IPC；<code>src/vs/code/electron-main/</code> 只有两个核心文件。</p>
+<h3 id="31">3.1 目标环境目录</h3>
+<p>每一层内部再按运行环境拆分：</p>
+<table>
+<thead>
+<tr>
+<th>目录</th>
+<th>可用 API</th>
+<th>典型用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>common/</code></td>
+<td>基础 JavaScript</td>
+<td>纯逻辑、协议、数据结构</td>
+</tr>
+<tr>
+<td><code>browser/</code></td>
+<td>Web/DOM</td>
+<td>渲染进程与 Web 版共享的 UI</td>
+</tr>
+<tr>
+<td><code>node/</code></td>
+<td>Node.js</td>
+<td>主进程、CLI、服务器、扩展宿主</td>
+</tr>
+<tr>
+<td><code>electron-browser/</code></td>
+<td>Browser + 有限 Electron IPC</td>
+<td>Electron 渲染进程</td>
+</tr>
+<tr>
+<td><code>electron-utility/</code></td>
+<td>Electron utility process</td>
+<td>共享进程、扩展宿主等后台进程</td>
+</tr>
+<tr>
+<td><code>electron-main/</code></td>
+<td>Electron 主进程 API</td>
+<td>窗口、生命周期、原生集成</td>
+</tr>
+</tbody>
+</table>
+<p><code>src/vs/code/</code> 的目录正好对应 Electron 的进程边界：</p>
+<ul>
+<li><code>electron-main/</code>：主进程，<code>main.ts</code> 与 <code>app.ts</code>。</li>
+<li><code>electron-browser/</code>：渲染进程的 workbench 引导。</li>
+<li><code>electron-utility/</code>：共享进程，<code>sharedProcessMain.ts</code> 以及清理、扩展管理、本地化等 contribution。</li>
+<li><code>node/</code>：CLI 参数与 Node 入口。</li>
+<li><code>browser/</code>：Web 版的工作台引导。</li>
+</ul>
+<p>这把“代码放在哪个进程运行”变成目录结构的一部分，阅读时不必靠运行时判断。</p>
+<h3 id="32-contribution">3.2 contribution 模型</h3>
+<p><code>src/vs/workbench/contrib/</code> 下有 102 个 feature 目录，覆盖 <code>git</code>、<code>debug</code>、<code>search</code>、<code>terminal</code>、<code>notebook</code>、<code>chat</code>、<code>mcp</code>、<code>remote</code> 等。每个 contribution 有一个 <code>.contribution.ts</code> 入口，跨 contribution 的依赖通过各自的 common API 完成，不能直接进入对方内部实现。<code>src/vs/workbench/workbench.common.main.ts</code>、<code>workbench.desktop.main.ts</code>、<code>workbench.web.main.ts</code> 是三个入口，只有被入口引用到的代码才会加载。</p>
+<p><code>src/vs/workbench/services/</code> 放工作台级服务实现，<code>src/vs/workbench/api/</code> 放扩展 API 的宿主侧与扩展宿主侧。<code>platform</code> 层提供 112 个服务目录，通过构造函数注入和 <code>createDecorator</code> 标识符组合。分层、目标环境、contribution 入口三者一起，构成了 VS Code 的模块边界。</p>
+<h2 id="4-electron">4. Electron 进程模型</h2>
+<p>VS Code 的目录树直接映射 Electron 的多进程模型：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>┌────────────────────────────────────────────────────────────┐
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>│ Electron main process                                     │
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>│ src/vs/code/electron-main/main.ts → app.ts → CodeApplication│
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>│ 负责：应用生命周期、窗口、菜单、协议、更新、服务注册         │
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>└───────────────┬───────────────────────┬────────────────────┘
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>                │ BrowserWindow          │ utilityProcess
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>                ▼                        ▼
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>┌──────────────────────────────┐  ┌──────────────────────────┐
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>│ Renderer / Workbench         │  │ Shared process           │
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>│ electron-browser/workbench   │  │ electron-utility/        │
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>│ workbench.desktop.main.ts    │  │ sharedProcessMain.ts     │
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>│ src/vs/workbench/browser/    │  │ 扩展管理、用户数据同步、   │
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>│ workbench.ts                 │  │ 隧道、清理任务            │
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>└───────────────┬──────────────┘  └──────────────────────────┘
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>                │ RPC
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>                ▼
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>┌──────────────────────────────┐
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>│ Extension host (utility)     │
+</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>│ ExtensionHostStarter         │
+</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a>│ workbench/api/node/          │
+</span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a>│ extensionHostProcess.ts      │
+</span><span id="__span-2-22"><a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a>│ mainThread* ↔ extHost*       │
+</span><span id="__span-2-23"><a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a>└──────────────────────────────┘
+</span></code></pre></div>
+<p>主进程入口的调用关系：</p>
+<ol>
+<li><code>src/vs/code/electron-main/main.ts</code> 创建服务、解析启动参数、处理单实例与 IPC。</li>
+<li><code>src/vs/code/electron-main/app.ts</code> 的 <code>CodeApplication</code> 初始化应用、创建窗口、注册协议与更新。</li>
+<li>窗口加载 <code>src/vs/code/electron-browser/workbench/workbench.ts</code>，进入 <code>src/vs/workbench/electron-browser/desktop.main.ts</code>。</li>
+<li><code>src/vs/workbench/workbench.desktop.main.ts</code> 引入 common、desktop contribution 和 electron-browser 服务。</li>
+<li><code>src/vs/workbench/browser/workbench.ts</code> 创建 <code>Workbench</code>，布局 parts、视图、编辑器与状态栏。</li>
+</ol>
+<p>扩展宿主的启动点在 <code>src/vs/platform/extensions/electron-main/extensionHostStarter.ts</code>：它通过 <code>WindowUtilityProcess</code> 启动 <code>vs/workbench/api/node/extensionHostProcess</code>，并把 <code>type: 'extensionHost'</code> 的进程注册进主进程生命周期。<code>src/vs/workbench/api/</code> 共有 367 个文件，<code>browser/mainThread*.ts</code> 与 <code>common/extHost*.ts</code> 成对出现，负责把 VS Code 内部服务映射为扩展 API。</p>
+<p>IPC 基础设施集中在 <code>src/vs/base/parts/ipc/</code>：<code>common</code> 定义通道与协议，<code>node</code> 提供进程间 socket，<code>electron-main</code> 与 <code>electron-browser</code> 提供 Electron 适配，<code>src/vs/platform/ipc/</code> 提供主进程服务通道。共享进程、扩展宿主、窗口之间都通过这套通道通信。</p>
+<p>远程与 Web 复用同一套 workbench：</p>
+<ul>
+<li><code>src/vs/server/node/</code> 提供远程服务器、远程扩展宿主、文件系统与终端通道。</li>
+<li><code>src/vs/workbench/workbench.web.main.ts</code> 是 Web 入口。</li>
+<li><code>src/vs/code/browser/workbench/workbench.ts</code> 是浏览器引导。</li>
+<li><code>remote/package.json</code> 与 <code>remote/web/package.json</code> 只负责依赖清单。</li>
+</ul>
+<h2 id="5">5. 内建扩展</h2>
+<p><code>extensions/</code> 下有 96 个一级目录，95 个 <code>package.json</code>。它们随应用一起发布，覆盖语言语法、语言特性、主题、调试、Git、GitHub、终端建议、Markdown、Notebook、Copilot 等。代表性结构：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>extensions/
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>├── git/
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>│   ├── package.json       # contributes: commands/keybindings/menus/views
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>│   ├── src/
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>│   └── ...
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>├── typescript-language-features/
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>│   ├── package.json
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>│   ├── src/
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>│   └── server/
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>├── theme-defaults/
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>├── copilot/
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>└── ...
+</span></code></pre></div>
+<p><code>extensions/git/package.json</code> 声明 <code>main</code>、<code>engines.vscode</code>、<code>activationEvents</code> 和 <code>contributes</code>，与 marketplace 扩展遵循同一套 API。<code>extensions/package.json</code> 是共享依赖根，包含 <code>typescript</code>、<code>@parcel/watcher</code>、<code>esbuild</code>，并用 <code>allowScripts</code> 放行 <code>@parcel/watcher</code> 与 <code>esbuild</code> 的安装脚本。构建时，<code>build/gulpfile.extensions.ts</code> 与 <code>build/npm/postinstall.ts</code> 负责编译、安装和打包这些扩展。</p>
+<p>内建扩展的数量说明了 VS Code 的功能组织方式：核心 workbench 提供平台能力，语言与工具能力尽量放在独立扩展包里。扩展宿主通过 <code>vscode.d.ts</code> 与 <code>workbench/api</code> 提供稳定边界，内建扩展与第三方扩展共享同一套协议。</p>
+<h2 id="6">6. 构建、版本与供应链</h2>
+<h3 id="61-electron">6.1 Electron 版本的实际来源</h3>
+<p>参考树的 Electron 版本不在根 <code>package.json</code> 的 <code>devDependencies</code> 里。权威来源是 <code>.npmrc</code>：</p>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="na">disturl</span><span class="o">=</span><span class="s">"https://electronjs.org/headers"</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="na">target</span><span class="o">=</span><span class="s">"43.8.3"</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="na">ms_build_id</span><span class="o">=</span><span class="s">"15784459"</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="na">runtime</span><span class="o">=</span><span class="s">"electron"</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="na">ignore-scripts</span><span class="o">=</span><span class="s">false</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="na">build_from_source</span><span class="o">=</span><span class="s">"true"</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="na">legacy-peer-deps</span><span class="o">=</span><span class="s">"true"</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="na">timeout</span><span class="o">=</span><span class="s">180000</span>
+</span></code></pre></div>
+<p><code>build/lib/electronVersion.ts</code> 用正则从 <code>.npmrc</code> 读取 <code>target</code> 与 <code>ms_build_id</code>；<code>build/lib/electron.ts</code> 调用 <code>@vscode/gulp-electron</code> 下载对应平台的 Electron 归档；<code>build/checksums/electron.txt</code> 记录所有 43.8.3 制品的 SHA-256，包括 <code>electron-v43.8.3-*.zip</code> 与 <code>chromedriver-v43.8.3-*.zip</code>。<code>build/npm/electronTypes.ts</code> 还按同一版本下载 <code>electron.d.ts</code>，并用 checksums 校验。</p>
+<p>这条链路解释了为什么根 <code>package.json</code> 不需要 <code>electron</code> 依赖：Electron 二进制由构建系统下载到 <code>.build/electron</code>，类型声明下载到 <code>.build/typings</code>，两者都由 <code>.npmrc</code> 的 <code>target</code> 驱动。<code>build/lib/electronVersion.ts</code> 还会比较 <code>.build/electron/version</code> 与目标版本，决定是否重新下载。</p>
+<h3 id="62-node">6.2 Node 版本</h3>
+<p><code>.nvmrc</code> 为 <code>24.22.1</code>。<code>build/npm/preinstall.ts</code> 会读取它，要求当前 Node 的主版本一致、次版本不低于 <code>.nvmrc</code>，并在 npm 主版本达到 13 时拒绝安装。<code>.devcontainer/Dockerfile</code> 使用 <code>mcr.microsoft.com/devcontainers/typescript-node:24-bookworm</code>，把 Node 24 与 Debian bookworm 固化到开发容器里。根 <code>package.json</code> 没有 <code>engines</code> 字段，Node 约束由 <code>.nvmrc</code> 与 preinstall 脚本共同承担。</p>
+<h3 id="63-npm">6.3 npm 与多安装根</h3>
+<p>参考树使用 npm，根 <code>package-lock.json</code> 是 lockfileVersion 3，包含 1,670 个包条目。仓库里共有 63 个 <code>package-lock.json</code>，<code>build/npm/dirs.ts</code> 列出 54 个安装根：根目录、<code>build</code>、<code>build/rspack</code>、<code>build/vite</code>、<code>extensions</code>、多个带依赖的扩展、<code>remote</code>、<code>remote/web</code>、<code>test/*</code>、<code>.vscode/extensions/*</code>。<code>build/npm/postinstall.ts</code> 依次在这些目录执行 npm 安装，并用 <code>installStateHash.ts</code> 做增量跳过。</p>
+<p>这是“多安装根”模型。每个扩展或测试目录保留自己的锁文件，根锁文件负责主应用依赖。VS Code 用 <code>build/npm/check-allow-scripts.ts</code> 检查安装脚本：它在每个 package.json 所在目录运行 <code>npm approve-scripts --allow-scripts-pending</code>，发现未列入 <code>allowScripts</code> 的脚本就失败。根 <code>package.json</code> 的 <code>allowScripts</code> 有 29 项，其中 6 项显式设为 <code>false</code>；<code>extensions/package.json</code> 与 <code>remote/package.json</code> 也各自维护允许列表。</p>
+<p>这套机制与 pnpm 12 的 <code>allowBuilds</code> 目标一致：安装脚本必须被显式批准。VS Code 把允许列表放在各 <code>package.json</code> 的 <code>allowScripts</code>，pnpm 12 把允许列表放在 <code>pnpm-workspace.yaml</code> 的 <code>allowBuilds</code>。两者都在解决“依赖树里的生命周期脚本需要可审计的放行策略”这个问题。</p>
+<h3 id="64">6.4 打包</h3>
+<p><code>build/</code> 是打包与发布的中枢：</p>
+<ul>
+<li><code>build/gulpfile.vscode.ts</code> 组装主应用，处理 ASAR、NLS、source map、Copilot 运行时、checksums 与 macOS 打包。</li>
+<li><code>build/gulpfile.vscode.linux.ts</code>、<code>.win32.ts</code>、<code>.web.ts</code> 分别处理 Linux、Windows、Web 产物。</li>
+<li><code>build/lib/electron.ts</code> 下载 Electron 并生成平台模板。</li>
+<li><code>build/lib/asar.ts</code> 处理应用归档。</li>
+<li><code>build/checksums/</code> 保存 Electron、Node、WSL、Explorer DLL 等制品的校验和。</li>
+<li><code>product.json</code> 负责品牌、协议、下载 feed 与内建扩展清单；Electron 版本由 <code>.npmrc</code> 提供。</li>
+<li><code>resources/</code> 提供各平台图标、<code>.desktop</code>、安装器资源。</li>
+</ul>
+<p>CI 分成两层：<code>build/azure-pipelines/</code> 负责产品构建与发布，覆盖 linux、win32、darwin、web、cli、copilot、distro 等目录；<code>.github/workflows/</code> 负责 PR 侧的 Linux/Windows/macOS 测试、CLI 测试、Sessions E2E 与依赖检查。<code>.github/actions/setup-electron/action.yml</code> 用 <code>hashFiles('.npmrc', 'build/checksums/electron.txt')</code> 作为 Electron 缓存键，把“版本文件变化”直接映射到缓存失效策略。</p>
+<h2 id="7">7. 测试与开发工作流</h2>
+<p><code>test/</code> 按测试类型拆分：</p>
+<ul>
+<li><code>test/unit/</code>：Node、浏览器、Electron 单元测试。</li>
+<li><code>test/integration/</code>：浏览器、Electron、Agent Host 集成测试。</li>
+<li><code>test/smoke/</code>：UI 冒烟测试。</li>
+<li><code>test/automation/</code>：自动化测试基础设施。</li>
+<li><code>test/monaco/</code>：Monaco 独立测试。</li>
+<li><code>test/scenario/</code>、<code>test/sanity/</code>：场景与发布 sanity 测试。</li>
+<li><code>test/componentFixtures/</code>：组件夹具与 Playwright 截图。</li>
+</ul>
+<p><code>scripts/</code> 提供 <code>code.sh</code>、<code>code-server.sh</code>、<code>code-web.sh</code>、<code>test.sh</code>、<code>test-integration.sh</code> 等入口。根 <code>package.json</code> 的 <code>compile</code>、<code>watch</code>、<code>test-node</code>、<code>test-browser</code>、<code>build-fast</code> 脚本负责日常开发。<code>.devcontainer</code> 提供 9GB 内存、desktop-lite、Rust、sshd 等特性，适合完整构建与 UI 测试。</p>
+<p><code>scripts/code.sh</code> 还保留 WSL 分支：未设置 <code>DISPLAY</code> 时会尝试从 Windows 侧推导显示地址。现代 WSLg 已提供 <code>DISPLAY=:0</code>，这个分支通常不会触发；它说明 VS Code 自身也把 WSL 作为一等开发环境处理。</p>
+<h2 id="8-agent">8. Agent 与扩展生态</h2>
+<p>参考树包含一层明显的 agent 工具链：</p>
+<ul>
+<li><code>src/vs/sessions/</code>：Agents Window，作为 <code>workbench</code> 之上的新层，拥有独立的 browser/common/electron-browser/contrib/services 和 13 份 Markdown 文档。<code>LAYERS.md</code> 明确规定 <code>sessions</code> 可以导入 <code>workbench</code>，<code>workbench</code> 不能反向导入 <code>sessions</code>。</li>
+<li><code>src/vs/platform/</code> 中的 <code>chat</code>、<code>mcp</code>、<code>agentHost</code>、<code>agentPlugins</code> 等服务目录。</li>
+<li><code>src/vs/workbench/contrib/</code> 中的 <code>chat</code>、<code>mcp</code>、<code>inlineChat</code>、<code>inlineCompletions</code>、<code>remoteCodingAgents</code> 等 contribution。</li>
+<li><code>src/vscode-dts/</code> 的 185 个 proposed API，覆盖 chat、MCP、language model、agent sessions。</li>
+<li><code>.github/instructions/</code> 与 50 个 <code>.github/skills/</code>，<code>AGENTS.md</code>，<code>.agents/skills/launch</code>，<code>.mcp.json</code>，<code>copilot_shim/</code> 与 <code>extensions/copilot/</code>。</li>
+</ul>
+<p>这层结构把“AI 能力”放进与编辑器、终端、Git 相同的 contribution 体系，同时用 <code>sessions</code> 的独立层约束新增代码的导入方向。对于大型 Electron 应用，这是一种可复用的演进方式：新能力先作为独立层或 extension，再通过明确边界接入主工作台。</p>
+<h2 id="9-electron-pnpm-12">9. 对 Electron 项目与 pnpm 12 的启示</h2>
+<ol>
+<li><strong>按进程边界组织目录。</strong> <code>electron-main</code>、<code>electron-browser</code>、<code>electron-utility</code>、<code>node</code> 各自有明确职责，主进程保持轻薄，功能放进 platform/workbench。我们的三个沙箱可以先把 <code>main</code>、<code>preload</code>、<code>renderer</code> 分开，再按需要增加 utility 进程。</li>
+<li><strong>把分层写成可检查的规则。</strong> VS Code 用 ESLint 的 import pattern 检查层间依赖；<code>sessions</code> 的 <code>LAYERS.md</code> 把允许与禁止的导入写成文档。项目规模扩大后，这类规则比口头约定可靠。</li>
+<li><strong>一个版本源头，多种校验。</strong> Electron target 在 <code>.npmrc</code>，Node 在 <code>.nvmrc</code>，依赖在 lockfile，制品在 checksums，缓存键引用这些文件。我们的 pnpm 项目对应 <code>package.json</code> 的 <code>packageManager</code>/<code>devEngines</code>、<code>pnpm-workspace.yaml</code>、<code>pnpm-lock.yaml</code> 与 CI 的 frozen 安装。</li>
+<li><strong>安装脚本要显式放行。</strong> VS Code 用 <code>allowScripts</code> + <code>npm approve-scripts</code>；pnpm 12 用 <code>allowBuilds</code> + <code>pnpm approve-builds</code>。两者都把“依赖能否执行生命周期脚本”作为供应链审查点。</li>
+<li><strong>扩展与内建功能共享 API 边界。</strong> <code>workbench/api</code> 的 mainThread/extHost 配对、<code>vscode.d.ts</code> 与 proposed API，把内建扩展和第三方扩展放在同一套协议上。Electron 应用可以把插件/扩展能力设计成独立进程与 RPC，把功能放在明确边界内。</li>
+<li><strong>构建、打包、资源、测试分开。</strong> <code>build/</code>、<code>resources/</code>、<code>test/</code>、<code>scripts/</code> 各自有清晰入口，平台差异落在独立 gulpfile 与目录，项目规模增长时仍能保持入口清晰。</li>
+<li><strong>版本文件要能被机器读取。</strong> <code>.npmrc</code>、<code>.nvmrc</code>、<code>package-lock.json</code>、<code>build/checksums/electron.txt</code> 都是构建脚本直接读取的输入；README 只做人读矩阵。我们的项目把 <code>package.json</code>、<code>pnpm-workspace.yaml</code>、<code>pnpm-lock.yaml</code>、<code>.nvmrc</code> 作为机器可读来源。</li>
+</ol>
+<h2 id="10">10. 关键子树索引</h2>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>src/vs/
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>├── base/                  # 通用基础设施：事件、生命周期、URI、IPC parts
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>├── platform/              # 112 个服务目录：文件、配置、存储、扩展、终端、远程、MCP
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>├── editor/                # Monaco 编辑器核心与 contrib
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>├── workbench/
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>│   ├── api/               # 扩展 API 宿主，367 个文件
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>│   ├── browser/           # 工作台 UI 外壳与 parts
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>│   ├── common/            # 工作台协议与共享逻辑
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>│   ├── contrib/           # 102 个 feature contribution
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>│   ├── electron-browser/  # Electron 渲染进程入口
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>│   └── services/          # 工作台级服务
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>├── code/
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>│   ├── electron-main/     # 主进程 main.ts / app.ts
+</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>│   ├── electron-browser/  # 渲染进程 workbench 引导
+</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>│   ├── electron-utility/  # 共享进程
+</span><span id="__span-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>│   ├── node/              # CLI 参数与 Node 入口
+</span><span id="__span-5-17"><a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>│   └── browser/           # Web 版引导
+</span><span id="__span-5-18"><a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a>├── server/                # 远程服务器与远程扩展宿主
+</span><span id="__span-5-19"><a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a>└── sessions/              # Agents Window，位于 workbench 之上
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>build/
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>├── azure-pipelines/       # 产品构建与发布
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>├── checksums/             # Electron/Node 等制品校验
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>├── lib/                   # electronVersion、electron、asar、gulp 工具
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>├── linux/ darwin/ win32/  # 平台打包资源与依赖生成
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>├── npm/                   # 多安装根、preinstall/postinstall、allowScripts 检查
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>├── gulpfile.vscode*.ts    # 主应用与各平台构建
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>└── vite/ rspack/ next/    # 新一代构建实验与工具链
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>extensions/
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>├── git/ github/ github-authentication/
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>├── typescript-language-features/ html-language-features/ css-language-features/
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>├── markdown-language-features/ notebook-renderers/ terminal-suggest/
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>├── theme-*/                # 默认主题
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>├── copilot/                # Copilot 扩展
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>└── vscode-api-tests/       # API 测试扩展
+</span></code></pre></div>
+<h2 id="11">11. 代码阅读顺序</h2>
+<ol>
+<li><code>package.json</code>：版本、脚本、<code>allowScripts</code>。</li>
+<li><code>.npmrc</code> 与 <code>.nvmrc</code>：Electron target 与 Node 版本。</li>
+<li><code>build/lib/electronVersion.ts</code>、<code>build/lib/electron.ts</code>、<code>build/npm/electronTypes.ts</code>：Electron 下载与类型。</li>
+<li><code>build/npm/dirs.ts</code>、<code>build/npm/postinstall.ts</code>、<code>build/npm/check-allow-scripts.ts</code>：多安装根与脚本放行。</li>
+<li><code>.github/instructions/source-code-organization.instructions.md</code>：分层、目标环境、contribution 规则。</li>
+<li><code>src/vs/code/electron-main/main.ts</code>、<code>app.ts</code>：Electron 主进程。</li>
+<li><code>src/vs/workbench/electron-browser/desktop.main.ts</code>、<code>workbench.desktop.main.ts</code>：渲染进程入口。</li>
+<li><code>src/vs/platform/extensions/electron-main/extensionHostStarter.ts</code>、<code>src/vs/workbench/api/node/extensionHostProcess.ts</code>：扩展宿主。</li>
+<li><code>src/vs/sessions/README.md</code>、<code>LAYERS.md</code>：新层的边界与演进方式。</li>
+<li><code>build/gulpfile.vscode.ts</code>、<code>build/checksums/electron.txt</code>、<code>.github/actions/setup-electron/action.yml</code>：打包与可复现构建。</li>
+</ol>
+<p>第一部分的重点是目录结构与版本/构建路径。读完后，可以继续进入第二部分的文档索引；两篇教程共用 Electron 43.8.3 这一版本基线。</p>
+<h2 id="12">12. 开发文档：分布与阅读顺序</h2>
+<p>第一部分回答“代码放在哪里”，第二部分回答“文档从哪里读”。以下路径均相对 Code OSS 参考 checkout；统计数字来自参考 checkout，排除 <code>.git</code> 与 <code>node_modules</code>。</p>
+<p>统计口径：Code OSS 参考 checkout 当前 commit <code>d0adb05e</code>，共 <strong>375 篇 Markdown</strong>（排除 <code>.git</code>、<code>node_modules</code>）。其中真正适合作为开发入门与架构阅读的约 40 篇；其余主要是扩展 README、阶段计划、快照、模板与合规文本，按需查阅。</p>
+<h3 id="121">12.1 文档分布</h3>
+<table>
+<thead>
+<tr>
+<th>区域</th>
+<th style="text-align: right;"><code>.md</code> 数量</th>
+<th>内容概况</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>根目录</td>
+<td style="text-align: right;">4</td>
+<td>README、CONTRIBUTING、AGENTS、SECURITY</td>
+</tr>
+<tr>
+<td><code>.github/</code></td>
+<td style="text-align: right;">96</td>
+<td>27 篇 instructions、50 个 skills、2 篇 learnings、copilot-instructions、agents/data、issue/PR 模板</td>
+</tr>
+<tr>
+<td><code>src/</code></td>
+<td style="text-align: right;">125</td>
+<td>13 篇 sessions 顶层规格、14 个 sessions skills、70 篇 agentHost 文档（含大量阶段计划/快照）、约 28 篇其他子系统文档</td>
+</tr>
+<tr>
+<td><code>extensions/</code></td>
+<td style="text-align: right;">126</td>
+<td>36 篇顶层 README/CONTRIBUTING，其余为目标扩展的说明文档</td>
+</tr>
+<tr>
+<td><code>test/</code></td>
+<td style="text-align: right;">10</td>
+<td>单元、集成、冒烟、自动化、Monaco、sanity 测试</td>
+</tr>
+<tr>
+<td><code>build/</code></td>
+<td style="text-align: right;">6</td>
+<td>构建事件、ripple、Monaco 发布、Agent Host / Agent SDK 构建</td>
+</tr>
+<tr>
+<td><code>scripts/</code></td>
+<td style="text-align: right;">2</td>
+<td>开发启动器、mock policy server</td>
+</tr>
+<tr>
+<td>其他</td>
+<td style="text-align: right;">6</td>
+<td>devcontainer、cli、copilot_shim、<code>.agents</code>、ESLint 插件</td>
+</tr>
+</tbody>
+</table>
+<h3 id="122">12.2 推荐阅读顺序</h3>
+<p>以下路径均相对 Code OSS 参考 checkout。</p>
+<h4 id="0-14">第 0 层：定位（1–4）</h4>
+<ol>
+<li><code>README.md</code>：仓库定位、内建扩展、开发容器、许可证。</li>
+<li><code>CONTRIBUTING.md</code>：贡献流程、问题报告、PR 入口。</li>
+<li><code>AGENTS.md</code>：AI agent 的短入口，指向 Copilot Instructions。</li>
+<li><code>.github/copilot-instructions.md</code>：架构总览、代码查找方式、验证命令、编码约定。这是全仓库最浓缩的开发导读。</li>
+</ol>
+<h4 id="1-510">第 1 层：架构与编码契约（5–10）</h4>
+<ol>
+<li><code>.github/instructions/source-code-organization.instructions.md</code>：<code>base → platform → editor → workbench</code> 分层、目标环境目录、contribution 规则、依赖注入。</li>
+<li><code>.github/instructions/coding-guidelines.instructions.md</code>：命名、类型、注释、本地化、UI 文案。</li>
+<li><code>.github/instructions/best-practices.instructions.md</code>：通用代码实践。</li>
+<li><code>.github/instructions/writing-tests.instructions.md</code>：测试位置与写法。</li>
+<li><code>.github/instructions/committing.instructions.md</code>：提交信息规范。</li>
+<li><code>.github/instructions/oss.instructions.md</code>：开源许可证审查。</li>
+</ol>
+<h4 id="2-1122">第 2 层：开发环境、构建与测试（11–22）</h4>
+<ol>
+<li><code>.devcontainer/README.md</code>：Node 24-bookworm 容器、4 核/8GB 以上、VNC 与 WSL 说明。</li>
+<li><code>build/BUILD_EVENTS.md</code>：扩展 TypeScript watch/esbuild 构建的生命周期事件。</li>
+<li><code>build/ripple/README.md</code>：基于变更影响面的测试选择引擎，PR CI 的 <code>--runList</code> 来源。</li>
+<li><code>scripts/code-oss-launcher/README.md</code>：本地启动、调试与 CDP 辅助。</li>
+<li><code>test/README.md</code>：测试目录总览。</li>
+<li><code>test/unit/README.md</code>：Electron 内、浏览器内、Node 三种单元测试运行方式。</li>
+<li><code>test/integration/browser/README.md</code>：浏览器集成测试。</li>
+<li><code>test/smoke/README.md</code>：UI 冒烟测试。</li>
+<li><code>test/automation/README.md</code>：自动化测试基础设施。</li>
+<li><code>test/monaco/README.md</code>：Monaco 独立测试。</li>
+<li><code>test/sanity/README.md</code>：发布前 sanity 检查。</li>
+<li><code>test/componentFixtures/blocks-ci-screenshots.md</code>：组件夹具与 CI 截图对比（按需）。</li>
+</ol>
+<h4 id="3-2336">第 3 层：核心子系统（23–36）</h4>
+<ol>
+<li><code>src/vscode-dts/README.md</code>：扩展 API 声明与 proposed API 的生成方式。</li>
+<li><code>src/vs/sessions/README.md</code>：Agents Window 文档索引与结构边界。</li>
+<li><code>src/vs/sessions/LAYERS.md</code>：<code>sessions</code> 与 <code>workbench</code> 的导入层级规则。</li>
+<li><code>src/vs/sessions/SESSIONS.md</code>：session/chat 模型、服务、provider 契约与数据流。</li>
+<li><code>src/vs/sessions/LAYOUT.md</code>：workbench parts、网格、标题栏与编辑器呈现。</li>
+<li><code>src/vs/sessions/LAYOUT_CONTROLLER.md</code>：session-aware 布局捕获与恢复。</li>
+<li><code>src/vs/sessions/DESKTOP.md</code>：桌面端行为场景。</li>
+<li><code>src/vs/sessions/MOBILE.md</code>：手机布局与移动组件。</li>
+<li><code>src/vs/sessions/SESSIONS_LIST.md</code>：Sessions 侧边栏列表。</li>
+<li><code>src/vs/sessions/AUTOMATIONS.md</code>：自动化、AHP 路由、持久化、运行生命周期。</li>
+<li><code>src/vs/sessions/AI_CUSTOMIZATIONS.md</code>：AI 自定义项。</li>
+<li><code>src/vs/sessions/copilot-customizations-spec.md</code>：Copilot 自定义规格。</li>
+<li><code>src/vs/sessions/SESSION_COMPARISONS.md</code>：多 harness 实现对照。</li>
+<li><code>src/vs/sessions/SYSTEM_WIDE_KEYBINDING.md</code>：系统级 Open Agents Window 快捷键归属。</li>
+</ol>
+<p>Provider 文档在需要改 provider 时读：</p>
+<ul>
+<li><code>src/vs/sessions/contrib/providers/agentHost/AGENT_HOST_SESSIONS_PROVIDER.md</code></li>
+<li><code>src/vs/sessions/contrib/providers/copilotChatSessions/COPILOT_CHAT_SESSIONS_PROVIDER.md</code></li>
+<li><code>src/vs/sessions/contrib/providers/remoteAgentHost/REMOTE_AGENT_HOST_SESSIONS_PROVIDER.md</code></li>
+</ul>
+<h4 id="4-ui-3743">第 4 层：UI 与功能子系统（37–43）</h4>
+<ol>
+<li><code>src/vs/workbench/contrib/modernUI/README.md</code>：Modern UI 主题与视觉系统。</li>
+<li><code>src/vs/workbench/contrib/onboarding/README.md</code>：onboarding 流程。</li>
+<li><code>src/vs/workbench/contrib/chat/chatCodeOrganization.md</code>：chat contribution 的代码组织。</li>
+<li><code>src/vs/workbench/contrib/chat/common/plugins/AGENTS_PLUGINS.md</code>：插件架构与 Agent 插件。</li>
+<li><code>src/vs/workbench/contrib/terminalContrib/README.md</code>：终端 contribution 结构。</li>
+<li><code>src/vs/platform/github/README.md</code>：GitHub 服务实现。</li>
+<li><code>src/vs/workbench/contrib/modernUI/CSS_PERFORMANCE.md</code>：UI CSS 性能（按需）。</li>
+</ol>
+<h4 id="5-4446">第 5 层：扩展开发（44–46）</h4>
+<ol>
+<li><code>extensions/CONTRIBUTING.md</code>：内建扩展的目录、构建、浏览器目标、<code>esbuild</code> 配置。</li>
+<li><code>extensions/&lt;目标扩展&gt;/README.md</code>：只读你正在修改的扩展；126 篇扩展文档不必通读。</li>
+<li><code>extensions/copilot/CONTRIBUTING.md</code> 与 <code>extensions/copilot/README.md</code>：修改 Copilot 扩展时读。</li>
+</ol>
+<h4 id="6-agent-4751">第 6 层：Agent 工作流（47–51）</h4>
+<ol>
+<li><code>.github/instructions/</code> 的领域指令：先读第 1 层的 6 篇，再按任务读下面的“指令矩阵”。</li>
+<li><code>.github/skills/</code> 的 50 个技能：先读 <code>setup-environment</code>、<code>unit-tests</code>、<code>integration-tests</code>、<code>smoke-tests</code>、<code>code-review</code>、<code>fix-ci-failures</code>、<code>validate-ui-scenario</code>，再按领域取用。</li>
+<li><code>.github/learnings/README.md</code>、<code>.github/learnings/sessions.md</code>：可复用经验与临时反馈入口。</li>
+<li><code>src/vs/sessions/skills/*/SKILL.md</code>：Agents Window 的可执行工作流：
+    <code>act-on-feedback</code>、<code>code-review</code>、<code>commit</code>、<code>create-draft-pr</code>、<code>create-pr</code>、<code>fix-ci</code>、<code>generate-chat-background</code>、<code>generate-run-commands</code>、<code>merge</code>、<code>sync</code>、<code>sync-upstream</code>、<code>troubleshoot</code>、<code>update-pr</code>、<code>update-skills</code>。</li>
+<li><code>.agents/skills/launch/</code>：agent 启动技能（按需）。</li>
+</ol>
+<h4 id="7_1">第 7 层：高级与外围（按需）</h4>
+<ul>
+<li>Agent Host 稳定文档：
+  <code>src/vs/platform/agentHost/AGENTS.md</code>（Multi-Chat Architecture）、<code>LOCAL_ENDPOINT.md</code>、<code>OTEL.md</code>、<code>PERFORMANCE.md</code>、<code>common/meta/README.md</code>、<code>node/serviceBootstrapping.md</code>、<code>test/node/README.md</code>、<code>test/node/providerIntegration/README.md</code>、<code>test/node/e2e/README.md</code>、<code>test/node/protocol/README.md</code>、<code>node/missionControl/MISSION_CONTROL.md</code>。</li>
+<li>构建扩展：
+  <code>build/agentHost/README.md</code>、<code>build/agent-sdk/README.md</code>、<code>build/monaco/README.md</code>、<code>build/monaco/README-npm.md</code>。</li>
+<li>CLI 与 shim：
+  <code>cli/CONTRIBUTING.md</code>、<code>copilot_shim/REQUIREMENTS.md</code>、<code>copilot_shim/SHIM_POST_INSTALL.md</code>。</li>
+<li>工具与测试辅助：
+  <code>scripts/mock-policy-server/README.md</code>、<code>test/componentFixtures/blocks-ci-screenshots.md</code>、<code>.eslint-plugin-local/README.md</code>。</li>
+</ul>
+<h3 id="123-27-instructions">12.3 27 篇 instructions 的完整分组</h3>
+<p>路径前缀：<code>.github/instructions/</code></p>
+<p><strong>必读 6 篇</strong></p>
+<p><code>source-code-organization</code>、<code>coding-guidelines</code>、<code>best-practices</code>、<code>writing-tests</code>、<code>committing</code>、<code>oss</code></p>
+<p><strong>UI 与代码规范 7 篇</strong></p>
+<p><code>accessibility</code>、<code>css-best-practices</code>、<code>design-philosophy</code>、<code>design-tokens</code>、<code>disposable</code>、<code>observables</code>、<code>tree-widgets</code></p>
+<p><strong>功能与架构 9 篇</strong></p>
+<p><code>chat</code>、<code>sessions</code>、<code>notebook</code>、<code>interactive</code>、<code>ai-customization</code>、<code>agent-host-interoperability</code>、<code>agentHostTesting</code>、<code>automation-dialog</code>、<code>language-model-tool-descriptions</code></p>
+<p><strong>构建、合规与数据 5 篇</strong></p>
+<p><code>buildNext</code>、<code>oss-third-party-notices</code>、<code>telemetry</code>、<code>kusto</code>、<code>learnings</code></p>
+<h3 id="124-50-skills">12.4 50 个 skills 的完整分组</h3>
+<p>路径前缀：<code>.github/skills/&lt;name&gt;/SKILL.md</code></p>
+<p><strong>环境与构建（6）</strong></p>
+<p><code>setup-environment</code>、<code>vscode-dev-workbench</code>、<code>code-oss-logs</code>、<code>azure-pipelines</code>、<code>ci-artifact-testing</code>、<code>build-champ-triage</code></p>
+<p><strong>测试（7）</strong></p>
+<p><code>unit-tests</code>、<code>integration-tests</code>、<code>smoke-tests</code>、<code>flaky-smoke-tests</code>、<code>component-fixtures</code>、<code>validate-ui-scenario</code>、<code>update-screenshots</code></p>
+<p><strong>代码与 UI（10）</strong></p>
+<p><code>code-review</code>、<code>component</code>、<code>context-menus</code>、<code>hover</code>、<code>integrated-browser</code>、<code>ux-css-layout</code>、<code>ux-theming</code>、<code>design-philosophy</code>、<code>accessibility</code>、<code>doc-comments</code></p>
+<p><strong>性能与诊断（7）</strong></p>
+<p><code>auto-perf-optimize</code>、<code>chat-perf</code>、<code>cpu-profile-analysis</code>、<code>heap-snapshot-analysis</code>、<code>memory-leak-audit</code>、<code>symbolicate-crash-dump</code>、<code>otel</code></p>
+<p><strong>Agent 与 Sessions（7）</strong></p>
+<p><code>sessions</code>、<code>agent-host-chat-contributions</code>、<code>agent-host-e2e-tests</code>、<code>agent-host-logs</code>、<code>customizations-in-the-agent-host</code>、<code>chat-customizations-editor</code>、<code>author-contributions</code></p>
+<p><strong>流程与 Issue（13）</strong></p>
+<p><code>experiments</code>、<code>feature-tryouts</code>、<code>feedback-learning</code>、<code>fix-ci-failures</code>、<code>fixissueno</code>、<code>issue-grouping</code>、<code>migrate-issues</code>、<code>sweeper-plan</code>、<code>sweeper-implement</code>、<code>update-instructions</code>、<code>policy-and-managed-settings</code>、<code>codenotify</code>、<code>chat-pet-sprite-creation</code></p>
+<h3 id="125">12.5 不纳入阅读顺序的文档</h3>
+<p>这些文档有用途，但更适合搜索而不是从头读：</p>
+<ul>
+<li><code>.github/ISSUE_TEMPLATE/*</code>、<code>.github/pull_request_template.md</code>：模板。</li>
+<li><code>SECURITY.md</code>、<code>LICENSE.txt</code>、<code>ThirdPartyNotices.txt</code>、<code>cgmanifest.json</code>：政策与合规。</li>
+<li><code>extensions/*/CHANGELOG.md</code>、各扩展的用户向 README：只读目标扩展。</li>
+<li><code>src/vs/platform/agentHost/node/claude/phase*-plan.md</code>、<code>roadmap.md</code>、<code>KNOWN_ISSUES.md</code>、<code>TODO.md</code>：阶段计划与工作笔记。</li>
+<li><code>src/vs/platform/agentHost/test/node/e2e/providers/__snapshots__/*</code>：测试快照。</li>
+<li><code>src/vs/sessions/test/e2e/scenarios/*.scenario.md</code>：测试夹具。</li>
+<li><code>src/vs/editor/contrib/snippet/browser/snippet.md</code>、<code>src/vs/editor/test/node/diffing/README.md</code>：局部语法/测试参考。</li>
+</ul>
+<h3 id="126">12.6 与文档同读的版本文件</h3>
+<p>阅读构建与架构时，建议同时打开：</p>
+<ul>
+<li><code>.npmrc</code>：Electron <code>target="43.8.3"</code>、<code>runtime="electron"</code>。</li>
+<li><code>.nvmrc</code>：Node <code>24.22.1</code>。</li>
+<li><code>package.json</code>、<code>package-lock.json</code>：脚本、<code>allowScripts</code>、依赖锁定。</li>
+<li><code>.devcontainer/devcontainer.json</code>、<code>Dockerfile</code>：容器环境。</li>
+<li><code>build/lib/electronVersion.ts</code>、<code>build/npm/electronTypes.ts</code>、<code>build/checksums/electron.txt</code>：Electron 下载与校验链路。</li>
+<li><code>.github/actions/setup-electron/action.yml</code>：CI 缓存键。</li>
+<li><code>product.json</code>：品牌、下载 feed、内建扩展清单。</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 <a href="https://godjustwantaname.github.io">jialecai</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/godjustwantaname" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["header.autohide", "content.code.copy", "content.code.select", "content.code.annotate", "content.footnote.tooltips", "content.tooltips"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/katex.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
+      
+        <script src="https://unpkg.com/l2d-widget/dist/index.min.js"></script>
+      
+        <script src="../../javascripts/l2d-init.js"></script>
+      
+    
+  </body>
+</html>

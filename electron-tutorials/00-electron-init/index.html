@@ -1,0 +1,2833 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Personal Blog by Sheldon">
+      
+      
+        <meta name="author" content="jialecai">
+      
+      
+        <link rel="canonical" href="https://godjustwantaname.github.io/electron-tutorials/00-electron-init/">
+      
+      
+        <link rel="prev" href="../../handbook/uv/">
+      
+      
+        <link rel="next" href="../01-electron-vscode/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Electron 初始化 - Harmony</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+  
+  
+  
+  
+  <style>:root{--md-annotation-icon:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M22%2012a10%2010%200%200%201-10%2010A10%2010%200%200%201%202%2012%2010%2010%200%200%201%2012%202a10%2010%200%200%201%2010%2010M6%2013h8l-3.5%203.5%201.42%201.42L17.84%2012l-5.92-5.92L10.5%207.5%2014%2011H6z%22/%3E%3C/svg%3E');}</style>
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#electron-43-pnpm-12-wsl2-debian" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Harmony" class="md-header__button md-logo" aria-label="Harmony" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Harmony
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Electron 初始化
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/godjustwantaname.github.io/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Harmony" class="md-nav__button md-logo" aria-label="Harmony" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Harmony
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/godjustwantaname.github.io/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Handbook
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Handbook
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../handbook/markdown/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Markdown
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../handbook/powershell/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Powershell
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../handbook/docker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../handbook/git/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../handbook/wsl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WSL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../handbook/uv/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UV
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Electron Tutorials
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Electron Tutorials
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Electron 初始化
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Electron 初始化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#0" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0. 版本基线与项目结构
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0. 版本基线与项目结构">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        项目结构
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-pnpm-12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. pnpm 12 的项目配置
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. pnpm 12 的项目配置">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-pnpm-init" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 pnpm init 生成的内容
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-pnpm-workspaceyaml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 配置写在 pnpm-workspace.yaml
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 固定版本与锁文件
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-pnpm-npm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 用 pnpm 替代 npm
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-wsl2-gui" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. WSL2 的 GUI 与沙盒
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. WSL2 的 GUI 与沙盒">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-wslg" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 WSLg 已经提供显示
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-root-chromium" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 root 与 Chromium 沙盒
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-libglesv2so-permission-denied" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 libGLESv2.so: Permission denied 的根因与修复
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-devshm-gpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 /dev/shm 与 GPU 警告
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-a" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 路径 A：手工初始化
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 路径 A：手工初始化">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 初始化命令
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 主进程
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-preload" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 preload 与渲染页面
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 启动与验证
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 目录树
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-belectron-forge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 路径 B：Electron Forge
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 路径 B：Electron Forge">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 脚手架命令
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 校正包管理器字段
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 启动
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 打包
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5 目录树
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-celectron-vite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 路径 C：electron-vite
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 路径 C：electron-vite">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 选择官方脚手架
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-pnpm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 安装前写入 pnpm 配置
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-pnpm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 脚本改用 pnpm
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 开发、构建与预览
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#55" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5 目录树
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 三条路径的适用场景
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 版本信息放在哪里
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. 验证记录
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. 常见问题
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. 常见问题">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#browserwindow-app-undefined" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BrowserWindow 没有导出，app 是 undefined
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#libglesv2so-permission-denied" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        libGLESv2.so: Permission denied
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-as-root-without-no-sandbox" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Running as root without --no-sandbox
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#err_pnpm_ignored_builds" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ERR_PNPM_IGNORED_BUILDS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#npmrc-node-linker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        .npmrc 里的 node-linker 没有效果
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#corepack-pnpm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Corepack 切换了 pnpm 版本
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#forge-0" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Forge 启动失败但命令退出码为 0
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#webgl-blocklistdri3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WebGL blocklist、dri3 警告
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. 速查
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-electron-vscode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VS Code 标杆
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#0" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0. 版本基线与项目结构
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0. 版本基线与项目结构">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        项目结构
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-pnpm-12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. pnpm 12 的项目配置
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. pnpm 12 的项目配置">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-pnpm-init" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 pnpm init 生成的内容
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-pnpm-workspaceyaml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 配置写在 pnpm-workspace.yaml
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 固定版本与锁文件
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-pnpm-npm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 用 pnpm 替代 npm
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-wsl2-gui" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. WSL2 的 GUI 与沙盒
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. WSL2 的 GUI 与沙盒">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-wslg" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 WSLg 已经提供显示
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-root-chromium" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 root 与 Chromium 沙盒
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-libglesv2so-permission-denied" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 libGLESv2.so: Permission denied 的根因与修复
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-devshm-gpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 /dev/shm 与 GPU 警告
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-a" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 路径 A：手工初始化
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 路径 A：手工初始化">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 初始化命令
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 主进程
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-preload" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 preload 与渲染页面
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 启动与验证
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 目录树
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-belectron-forge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 路径 B：Electron Forge
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 路径 B：Electron Forge">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 脚手架命令
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 校正包管理器字段
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 启动
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 打包
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5 目录树
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-celectron-vite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 路径 C：electron-vite
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 路径 C：electron-vite">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 选择官方脚手架
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-pnpm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 安装前写入 pnpm 配置
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-pnpm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 脚本改用 pnpm
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 开发、构建与预览
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#55" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5 目录树
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 三条路径的适用场景
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 版本信息放在哪里
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. 验证记录
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. 常见问题
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. 常见问题">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#browserwindow-app-undefined" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BrowserWindow 没有导出，app 是 undefined
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#libglesv2so-permission-denied" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        libGLESv2.so: Permission denied
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-as-root-without-no-sandbox" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Running as root without --no-sandbox
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#err_pnpm_ignored_builds" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ERR_PNPM_IGNORED_BUILDS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#npmrc-node-linker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        .npmrc 里的 node-linker 没有效果
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#corepack-pnpm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Corepack 切换了 pnpm 版本
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#forge-0" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Forge 启动失败但命令退出码为 0
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#webgl-blocklistdri3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WebGL blocklist、dri3 警告
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. 速查
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="electron-43-pnpm-12-wsl2-debian">Electron 43 × pnpm 12 × WSL2 Debian 初始化教程</h1>
+<p>这份教程围绕三个可独立运行的沙箱展开：手工初始化、Electron Forge、electron-vite。示例项目根目录统一命名为 <code>project</code>，你可以替换成自己的项目名。三个沙箱各自拥有独立的 <code>package.json</code>、<code>pnpm-lock.yaml</code>、<code>node_modules</code> 和 <code>pnpm-workspace.yaml</code>，可以单独复制、安装和运行。</p>
+<blockquote>
+<p>文中命令、版本号、报错和截图来自 WSL2 / Debian / WSLg 的实际运行。三张效果图分别对应三条路径启动后的窗口。第二篇 <a href="../01-electron-vscode/">01-electron-vscode.md</a> 以 Code OSS / VS Code 为样本，继续整理工业级 Electron 项目的目录与文档索引。</p>
+</blockquote>
+<h2 id="0">0. 版本基线与项目结构</h2>
+<table>
+<thead>
+<tr>
+<th>组件</th>
+<th>版本</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Electron</td>
+<td>43.8.3</td>
+<td>对齐 Code OSS / VS Code 1.145.0 使用的 Electron 43.x 系列</td>
+</tr>
+<tr>
+<td>Chromium</td>
+<td>150.0.7871.250</td>
+<td>Electron 43.8.3 内置运行时</td>
+</tr>
+<tr>
+<td>Node.js（Electron 内置）</td>
+<td>24.22.0</td>
+<td>通过 <code>process.versions.node</code> 验证</td>
+</tr>
+<tr>
+<td>Node.js（主机工具链）</td>
+<td>22.23.2</td>
+<td>当前环境；Electron 43 的 npm 包要求 <code>&gt;=22.12.0</code></td>
+</tr>
+<tr>
+<td>pnpm</td>
+<td>12.9.1</td>
+<td>项目通过 Corepack 固定</td>
+</tr>
+<tr>
+<td>Electron Forge</td>
+<td>8.0.1</td>
+<td><code>02-forge</code> 沙箱</td>
+</tr>
+<tr>
+<td>electron-vite</td>
+<td>6.0.0</td>
+<td><code>03-electron-vite</code> 沙箱</td>
+</tr>
+<tr>
+<td>Vite</td>
+<td>8.3.5</td>
+<td>Forge 与 electron-vite 共用</td>
+</tr>
+<tr>
+<td>操作系统</td>
+<td>WSL2 + Debian</td>
+<td>GUI 由 WSLg 提供</td>
+</tr>
+</tbody>
+</table>
+<p>Electron 与 pnpm 都使用精确版本。Electron 固定为 <code>43.8.3</code>，pnpm 固定为 <code>12.9.1</code>，锁文件负责固定完整依赖图。这样升级动作会以一次明确的提交出现，团队和 CI 看到的是同一组版本。</p>
+<p>先确认工具链：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>node<span class="w"> </span>--version<span class="w">        </span><span class="c1"># v22.23.2</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>pnpm<span class="w"> </span>--version<span class="w">        </span><span class="c1"># 12.9.1</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>corepack<span class="w"> </span>--version<span class="w">    </span><span class="c1"># 0.34.6</span>
+</span></code></pre></div>
+<p>当 <code>pnpm --version</code> 显示其他版本时，先校正 Corepack 的默认版本：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>corepack<span class="w"> </span>prepare<span class="w"> </span>pnpm@12.9.1<span class="w"> </span>--activate
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>pnpm<span class="w"> </span>--version
+</span></code></pre></div>
+<p>项目内的 <code>packageManager</code> 字段会优先于全局默认值。进入每个沙箱后，<code>pnpm --version</code> 都应显示 12.9.1。</p>
+<h3 id="_1">项目结构</h3>
+<p>教程把示例项目根目录叫作 <code>project</code>。三条路径彼此独立，最终可以只保留一条，也可以并排保留：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>project/
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>├── README.md
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>├── 01-manual/
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>├── 02-forge/
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>└── 03-electron-vite/
+</span></code></pre></div>
+<p><code>project/README.md</code> 记录版本矩阵、环境前提与启动方式；每个沙箱内部都有自己的 <code>package.json</code>、<code>pnpm-lock.yaml</code>、<code>node_modules</code> 和 <code>pnpm-workspace.yaml</code>。<code>project/</code> 本身不需要父级 workspace，三个沙箱的安装和运行互不影响。下面的命令都从这个根目录开始；如果你的项目名不同，替换 <code>project</code> 即可。</p>
+<h2 id="1-pnpm-12">1. pnpm 12 的项目配置</h2>
+<h3 id="11-pnpm-init">1.1 <code>pnpm init</code> 生成的内容</h3>
+<p>在空目录执行：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>project/01-manual
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nb">cd</span><span class="w"> </span>project/01-manual
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>pnpm<span class="w"> </span>init
+</span></code></pre></div>
+<p>实际生成的 <code>package.json</code> 包含：</p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="p">{</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01-manual"</span><span class="p">,</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">  </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0"</span><span class="p">,</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">  </span><span class="nt">"main"</span><span class="p">:</span><span class="w"> </span><span class="s2">"index.js"</span><span class="p">,</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">  </span><span class="nt">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">    </span><span class="nt">"test"</span><span class="p">:</span><span class="w"> </span><span class="s2">"echo \"Error: no test specified\" &amp;&amp; exit 1"</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">  </span><span class="p">},</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">  </span><span class="nt">"devEngines"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">    </span><span class="nt">"packageManager"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pnpm"</span><span class="p">,</span>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">      </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12.9.1"</span><span class="p">,</span>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">      </span><span class="nt">"onFail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"download"</span>
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">  </span><span class="p">},</span>
+</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">  </span><span class="nt">"packageManager"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pnpm@12.9.1"</span><span class="p">,</span>
+</span><span id="__span-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="w">  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"module"</span>
+</span><span id="__span-4-17"><a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>这三个自动字段都保留：</p>
+<ul>
+<li><code>devEngines.packageManager</code> 让 Corepack 在版本不符时按策略处理；<code>onFail: "download"</code> 会在需要时下载指定版本。</li>
+<li><code>packageManager</code> 是项目的包管理器声明，Corepack 用它选择 pnpm。</li>
+<li><code>type: "module"</code> 让主进程的 <code>.js</code> 文件按 ESM 解析。主进程使用 <code>import</code>，preload 使用 <code>.cjs</code> 后缀；沙盒化的 preload 以 CommonJS 执行，这个组合在 Electron 43 下工作正常。</li>
+</ul>
+<p><code>devEngines.packageManager</code> 使用对象形式。字符串形式（例如 Forge 模板曾写入的 <code>"pnpm@11.21.0"</code>）会让 Corepack 提示该值被忽略。</p>
+<h3 id="12-pnpm-workspaceyaml">1.2 配置写在 <code>pnpm-workspace.yaml</code></h3>
+<p>pnpm 12 把项目级设置放在 <code>pnpm-workspace.yaml</code>，<code>.npmrc</code> 只保留认证与 registry 相关内容。下面的配置是三个沙箱的共同起点：</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nt">allowBuilds</span><span class="p">:</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span><span class="nt">electron</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span></code></pre></div>
+<p><code>allowBuilds</code> 是构建脚本的放行映射。pnpm 12 遇到未放行的依赖脚本会直接失败：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>Error: ERR_PNPM_IGNORED_BUILDS
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>  × adding a new package
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>  ╰─▶ Ignored build scripts: esbuild@0.28.2
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>  help: Run "pnpm approve-builds" to pick which dependencies should be allowed
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>        to run scripts.
+</span></code></pre></div>
+<p>把包名加入映射即可：</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nt">allowBuilds</span><span class="p">:</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">  </span><span class="nt">esbuild</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span></code></pre></div>
+<p><code>pnpm approve-builds</code> 会以交互方式选择包，并把结果写入同一个映射。旧写法 <code>onlyBuiltDependencies</code> 在本地测试中没有放行构建脚本；pnpm 12 使用 <code>allowBuilds</code>。</p>
+<p><code>.npmrc</code> 中的 <code>node-linker</code> 同样不再生效。实测配置：</p>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># .npmrc</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="na">node-linker</span><span class="o">=</span><span class="s">hoisted</span>
+</span></code></pre></div>
+<p>安装后 <code>pnpm config get node-linker</code> 返回 <code>undefined</code>，<code>node_modules/.pnpm</code> 仍然存在，布局保持 isolated。把同样的意图写进 <code>pnpm-workspace.yaml</code>：</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nt">nodeLinker</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hoisted</span>
+</span></code></pre></div>
+<p>安装后 <code>node_modules</code> 顶层出现真实目录：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>$ stat -c '%F' node_modules/electron
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>directory
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>$ ls node_modules/.pnpm
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>lock.yaml
+</span></code></pre></div>
+<p>isolated 布局则是符号链接加 <code>.pnpm</code> 包目录：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>node_modules/electron -&gt; .pnpm/electron@43.8.3/node_modules/electron
+</span></code></pre></div>
+<p>Forge 与 electron-builder 的打包器直接遍历 <code>node_modules</code>，hoisted 布局提供了它们需要的平铺结构。手工路径不需要打包器，使用默认 isolated 布局即可。</p>
+<h3 id="13">1.3 固定版本与锁文件</h3>
+<p>安装 Electron 时使用 <code>-E</code>（<code>--save-exact</code>）：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>pnpm<span class="w"> </span>add<span class="w"> </span>-D<span class="w"> </span>-E<span class="w"> </span>electron@43.8.3
+</span></code></pre></div>
+<p><code>package.json</code> 写入 <code>"electron": "43.8.3"</code>，<code>pnpm-lock.yaml</code> 锁定 Electron 及其传递依赖。CI 使用：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>pnpm<span class="w"> </span>install<span class="w"> </span>--frozen-lockfile
+</span></code></pre></div>
+<p>三个沙箱都通过了 frozen lockfile 安装。锁文件需要提交到版本库，升级依赖时由 <code>pnpm add</code> / <code>pnpm update</code> 更新，再一起提交。</p>
+<h3 id="14-pnpm-npm">1.4 用 pnpm 替代 npm</h3>
+<p>pnpm 接管安装、脚本和发布后，项目里仍然可能出现 npm 调用。electron-vite 脚手架的 <code>typecheck</code> 与 <code>build</code> 脚本原本写成：</p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nt">"typecheck"</span><span class="p">:</span><span class="w"> </span><span class="s2">"npm run typecheck:node &amp;&amp; npm run typecheck:web"</span><span class="p">,</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="nt">"build"</span><span class="p">:</span><span class="w"> </span><span class="s2">"npm run typecheck &amp;&amp; electron-vite build"</span>
+</span></code></pre></div>
+<p>本教程把它们改成：</p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="nt">"typecheck"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pnpm run typecheck:node &amp;&amp; pnpm run typecheck:web"</span><span class="p">,</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="nt">"build"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pnpm run typecheck &amp;&amp; electron-vite build"</span>
+</span></code></pre></div>
+<p>排查时搜索 <code>npm run</code>、<code>npm install</code>、<code>package-lock.json</code> 即可。README、CI 配置和脚手架模板也一并检查，避免在 pnpm 项目里混入第二套安装路径。</p>
+<h2 id="2-wsl2-gui">2. WSL2 的 GUI 与沙盒</h2>
+<h3 id="21-wslg">2.1 WSLg 已经提供显示</h3>
+<p>Windows 11 和 Windows 10 21H2 以上版本自带 WSLg。Debian 内的环境变量通常已经就绪：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="nb">printf</span><span class="w"> </span><span class="s1">'DISPLAY=%s\nWAYLAND_DISPLAY=%s\n'</span><span class="w"> </span><span class="s2">"</span><span class="nv">$DISPLAY</span><span class="s2">"</span><span class="w"> </span><span class="s2">"</span><span class="nv">$WAYLAND_DISPLAY</span><span class="s2">"</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="c1"># DISPLAY=:0</span>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="c1"># WAYLAND_DISPLAY=wayland-0</span>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>ls<span class="w"> </span>/mnt/wslg
+</span></code></pre></div>
+<p>不需要手动启动 X server，也不需要设置 <code>DISPLAY=:0</code>。WSLg 的 X11 与 Wayland socket 由 WSL 管理。</p>
+<h3 id="22-root-chromium">2.2 root 与 Chromium 沙盒</h3>
+<p>Electron 以 root 运行时，Chromium 会拒绝启动：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>FATAL:electron/shell/app/electron_main_delegate.cc:224] Running as root without --no-sandbox is not supported.
+</span></code></pre></div>
+<p>当前环境是 root，因此三个沙箱分别使用对应的关闭方式：</p>
+<table>
+<thead>
+<tr>
+<th>路径</th>
+<th>启动方式</th>
+<th>关闭参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>手工</td>
+<td><code>pnpm start</code></td>
+<td><code>electron . --no-sandbox ...</code></td>
+</tr>
+<tr>
+<td>Forge</td>
+<td><code>pnpm start</code></td>
+<td>脚本内 <code>ELECTRON_DISABLE_SANDBOX=1</code></td>
+</tr>
+<tr>
+<td>electron-vite</td>
+<td><code>pnpm dev</code> / <code>pnpm start</code></td>
+<td><code>electron-vite ... --noSandbox</code></td>
+</tr>
+</tbody>
+</table>
+<p>这些参数只在 root 测试环境使用。普通用户启用非特权用户命名空间后，可以恢复 Chromium 的默认沙盒。检查方式：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>cat<span class="w"> </span>/proc/sys/user/max_user_namespaces
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="c1"># 63413</span>
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>sysctl<span class="w"> </span>kernel.unprivileged_userns_clone
+</span></code></pre></div>
+<p>现代 Debian 内核使用 <code>user.max_user_namespaces</code>；较旧的内核才有 <code>kernel.unprivileged_userns_clone</code>。值为 0 时，可以用 sysctl 临时开启：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>sudo<span class="w"> </span>sysctl<span class="w"> </span>-w<span class="w"> </span>user.max_user_namespaces<span class="o">=</span><span class="m">15000</span>
+</span></code></pre></div>
+<p>需要持久化时写入 <code>/etc/sysctl.d/</code>。这项设置解决的是普通用户的沙盒能力；root 启动仍然需要关闭沙盒参数。</p>
+<h3 id="23-libglesv2so-permission-denied">2.3 <code>libGLESv2.so: Permission denied</code> 的根因与修复</h3>
+<p>第一次启动时出现：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>ERROR:ui/ozone/common/egl_util.cc:59] Failed to load GLES library:
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>project/01-manual/node_modules/.pnpm/electron@43.8.3/node_modules/electron/dist/libGLESv2.so:
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>cannot open shared object file: Permission denied
+</span></code></pre></div>
+<p>文件本身的权限是 755，<code>file</code> 与 <code>ldd</code> 都能正常读取，Python 的 <code>ctypes.CDLL</code> 也能加载。问题出在 GPU 进程的权限上下文：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>ls<span class="w"> </span>-ld<span class="w"> </span><span class="s2">"</span><span class="nv">$HOME</span><span class="s2">"</span>
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="c1"># drwx------ ... $HOME</span>
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>ps<span class="w"> </span>-eo<span class="w"> </span>pid,args<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>--<span class="w"> </span><span class="s1">'--type=gpu-process'</span>
+</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>grep<span class="w"> </span>-E<span class="w"> </span><span class="s1">'CapEff|NoNewPrivs'</span><span class="w"> </span>/proc/&lt;gpu-pid&gt;/status
+</span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="c1"># CapEff: 0000000000000000</span>
+</span><span id="__span-21-6"><a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a><span class="c1"># NoNewPrivs: 1</span>
+</span></code></pre></div>
+<p>GPU 进程的 uid 仍是 0，但 capabilities 被清空。它要穿过 <code>$HOME</code>（0700，属主当前用户）去读取 Electron 的共享库，缺少 <code>CAP_DAC_OVERRIDE</code> 时就会得到 <code>EACCES</code>。同一路径下的其他文件和 Python 进程以完整 root 权限运行，所以单独测试时看起来正常。</p>
+<p>处理方式按环境选择：</p>
+<ol>
+<li>以项目所有者身份运行 Electron，路径权限与进程身份一致。</li>
+<li>把项目放到 <code>/root</code> 下，root 自己的 home 对 root 可遍历。</li>
+<li>必须在 root 下保留当前路径时，给 home 增加遍历权限：</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>chmod<span class="w"> </span>o+x<span class="w"> </span><span class="s2">"</span><span class="nv">$HOME</span><span class="s2">"</span>
+</span></code></pre></div>
+<p>本教程采用第 3 种方式。<code>chmod o+x</code> 只开放目录遍历，不开放目录读取；在单用户 WSL 开发环境里足够，也能随时用 <code>chmod o-x "$HOME"</code> 还原。修复后，Electron 启动日志不再出现 <code>libGLESv2.so</code> 的权限错误。</p>
+<h3 id="24-devshm-gpu">2.4 <code>/dev/shm</code> 与 GPU 警告</h3>
+<p>检查共享内存：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>df<span class="w"> </span>-h<span class="w"> </span>/dev/shm
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="c1"># none  7.8G  0  7.8G  0% /dev/shm</span>
+</span></code></pre></div>
+<p>共享内存充足时可以省略 <code>--disable-dev-shm-usage</code>；容器或小内存 WSL 实例中该值偏小时再加。手工沙箱保留了该参数，Forge 与 electron-vite 没有添加。</p>
+<p>WSLg 的 GPU 能力有限，日志里可能出现：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>ContextResult::kFatalFailure: WebGL1 blocklisted
+</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>dri3 extension not supported
+</span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>InitializeSandbox() called with multiple threads in process gpu-process
+</span></code></pre></div>
+<p>这些是 WSLg 图形栈的警告，2D 界面仍能显示。应用依赖 WebGL 时，需要单独验证软件渲染路径；纯 2D 应用可以在主进程调用 <code>app.disableHardwareAcceleration()</code> 减少 GPU 初始化日志，需要 WebGL 的应用保留默认硬件加速。</p>
+<h2 id="3-a">3. 路径 A：手工初始化</h2>
+<p>沙箱位置：<code>project/01-manual</code>。</p>
+<h3 id="31">3.1 初始化命令</h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>project/01-manual
+</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="nb">cd</span><span class="w"> </span>project/01-manual
+</span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>pnpm<span class="w"> </span>init
+</span></code></pre></div>
+<p>保留 <code>pnpm init</code> 自动写入的 <code>devEngines</code>、<code>packageManager</code> 和 <code>type</code>，然后用 <code>pnpm pkg set</code> 补齐项目字段：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>pnpm<span class="w"> </span>pkg<span class="w"> </span><span class="nb">set</span><span class="w"> </span><span class="nv">name</span><span class="o">=</span><span class="s2">"project-manual"</span>
+</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>pnpm<span class="w"> </span>pkg<span class="w"> </span><span class="nb">set</span><span class="w"> </span><span class="nv">description</span><span class="o">=</span><span class="s2">"Minimal Electron 43 app initialized by hand on WSL2"</span>
+</span><span id="__span-26-3"><a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>pnpm<span class="w"> </span>pkg<span class="w"> </span><span class="nb">set</span><span class="w"> </span><span class="nv">private</span><span class="o">=</span><span class="nb">true</span><span class="w"> </span>--json
+</span><span id="__span-26-4"><a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a>pnpm<span class="w"> </span>pkg<span class="w"> </span><span class="nb">set</span><span class="w"> </span><span class="nv">main</span><span class="o">=</span><span class="s2">"src/main.js"</span>
+</span><span id="__span-26-5"><a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a>pnpm<span class="w"> </span>pkg<span class="w"> </span><span class="nb">set</span><span class="w"> </span>scripts.start<span class="o">=</span><span class="s2">"electron . --no-sandbox --disable-dev-shm-usage"</span>
+</span><span id="__span-26-6"><a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a>pnpm<span class="w"> </span>pkg<span class="w"> </span>delete<span class="w"> </span>scripts.test
+</span><span id="__span-26-7"><a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a>pnpm<span class="w"> </span>pkg<span class="w"> </span><span class="nb">set</span><span class="w"> </span>engines.node<span class="o">=</span><span class="s2">"&gt;=22.12.0"</span>
+</span><span id="__span-26-8"><a id="__codelineno-26-8" name="__codelineno-26-8" href="#__codelineno-26-8"></a>pnpm<span class="w"> </span>pkg<span class="w"> </span><span class="nb">set</span><span class="w"> </span>engines.pnpm<span class="o">=</span><span class="s2">"&gt;=12.9.0"</span>
+</span></code></pre></div>
+<p><code>private</code> 使用 <code>--json</code>，写入的是布尔值 <code>true</code>；不加 <code>--json</code> 会写成字符串 <code>"true"</code>。</p>
+<p>安装前先写 <code>pnpm-workspace.yaml</code>：</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="nt">allowBuilds</span><span class="p">:</span>
+</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="w">  </span><span class="nt">electron</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span></code></pre></div>
+<p>再安装精确版本的 Electron：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>pnpm<span class="w"> </span>add<span class="w"> </span>-D<span class="w"> </span>-E<span class="w"> </span>electron@43.8.3
+</span></code></pre></div>
+<p>实际输出：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>devDependencies:
+</span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>+ electron 43.8.3
+</span><span id="__span-29-3"><a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>
+</span><span id="__span-29-4"><a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a>Done in 43ms using pnpm v12.9.1
+</span></code></pre></div>
+<p>补齐 Node 版本与忽略文件：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="nb">printf</span><span class="w"> </span><span class="s1">'22.23.2\n'</span><span class="w"> </span>&gt;<span class="w"> </span>.nvmrc
+</span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="nb">printf</span><span class="w"> </span><span class="s1">'node_modules\n'</span><span class="w"> </span>&gt;<span class="w"> </span>.gitignore
+</span></code></pre></div>
+<p><code>README.md</code> 可以记录版本矩阵与启动命令，不是运行依赖；需要与下面的目录树对齐时，再补一份简短的说明即可。</p>
+<p>此时 <code>node_modules/.pnpm/electron@43.8.3/node_modules/electron/dist</code> 还不存在。Electron 43 的 npm 包把二进制下载放在首次执行 <code>electron</code> 时，<code>pnpm start</code> 会打印 <code>Downloading Electron binary...</code> 并完成解压。这条路径可以省略 <code>allowBuilds: electron</code>；保留它是为了后续加入需要构建脚本的依赖时，pnpm 12 有明确的放行策略。</p>
+<h3 id="32">3.2 主进程</h3>
+<p><code>src/main.js</code>：</p>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">app</span><span class="p">,</span><span class="w"> </span><span class="nx">BrowserWindow</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'electron'</span>
+</span><span id="__span-31-2"><a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">fileURLToPath</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'node:url'</span>
+</span><span id="__span-31-3"><a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">dirname</span><span class="p">,</span><span class="w"> </span><span class="nx">join</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'node:path'</span>
+</span><span id="__span-31-4"><a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a>
+</span><span id="__span-31-5"><a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a><span class="kd">const</span><span class="w"> </span><span class="nx">__dirname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">dirname</span><span class="p">(</span><span class="nx">fileURLToPath</span><span class="p">(</span><span class="k">import</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">url</span><span class="p">))</span>
+</span><span id="__span-31-6"><a id="__codelineno-31-6" name="__codelineno-31-6" href="#__codelineno-31-6"></a>
+</span><span id="__span-31-7"><a id="__codelineno-31-7" name="__codelineno-31-7" href="#__codelineno-31-7"></a><span class="kd">function</span><span class="w"> </span><span class="nx">createWindow</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-31-8"><a id="__codelineno-31-8" name="__codelineno-31-8" href="#__codelineno-31-8"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">win</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">BrowserWindow</span><span class="p">({</span>
+</span><span id="__span-31-9"><a id="__codelineno-31-9" name="__codelineno-31-9" href="#__codelineno-31-9"></a><span class="w">    </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="mf">960</span><span class="p">,</span>
+</span><span id="__span-31-10"><a id="__codelineno-31-10" name="__codelineno-31-10" href="#__codelineno-31-10"></a><span class="w">    </span><span class="nx">height</span><span class="o">:</span><span class="w"> </span><span class="mf">720</span><span class="p">,</span>
+</span><span id="__span-31-11"><a id="__codelineno-31-11" name="__codelineno-31-11" href="#__codelineno-31-11"></a><span class="w">    </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">'Electron 43 + pnpm 12'</span><span class="p">,</span>
+</span><span id="__span-31-12"><a id="__codelineno-31-12" name="__codelineno-31-12" href="#__codelineno-31-12"></a><span class="w">    </span><span class="nx">webPreferences</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-31-13"><a id="__codelineno-31-13" name="__codelineno-31-13" href="#__codelineno-31-13"></a><span class="w">      </span><span class="nx">preload</span><span class="o">:</span><span class="w"> </span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span><span class="w"> </span><span class="s1">'preload.cjs'</span><span class="p">),</span>
+</span><span id="__span-31-14"><a id="__codelineno-31-14" name="__codelineno-31-14" href="#__codelineno-31-14"></a><span class="w">      </span><span class="nx">contextIsolation</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+</span><span id="__span-31-15"><a id="__codelineno-31-15" name="__codelineno-31-15" href="#__codelineno-31-15"></a><span class="w">      </span><span class="nx">sandbox</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span>
+</span><span id="__span-31-16"><a id="__codelineno-31-16" name="__codelineno-31-16" href="#__codelineno-31-16"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-31-17"><a id="__codelineno-31-17" name="__codelineno-31-17" href="#__codelineno-31-17"></a><span class="w">  </span><span class="p">})</span>
+</span><span id="__span-31-18"><a id="__codelineno-31-18" name="__codelineno-31-18" href="#__codelineno-31-18"></a>
+</span><span id="__span-31-19"><a id="__codelineno-31-19" name="__codelineno-31-19" href="#__codelineno-31-19"></a><span class="w">  </span><span class="nx">win</span><span class="p">.</span><span class="nx">loadFile</span><span class="p">(</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span><span class="w"> </span><span class="s1">'renderer'</span><span class="p">,</span><span class="w"> </span><span class="s1">'index.html'</span><span class="p">))</span>
+</span><span id="__span-31-20"><a id="__codelineno-31-20" name="__codelineno-31-20" href="#__codelineno-31-20"></a><span class="p">}</span>
+</span><span id="__span-31-21"><a id="__codelineno-31-21" name="__codelineno-31-21" href="#__codelineno-31-21"></a>
+</span><span id="__span-31-22"><a id="__codelineno-31-22" name="__codelineno-31-22" href="#__codelineno-31-22"></a><span class="nx">app</span><span class="p">.</span><span class="nx">whenReady</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-31-23"><a id="__codelineno-31-23" name="__codelineno-31-23" href="#__codelineno-31-23"></a><span class="w">  </span><span class="nx">createWindow</span><span class="p">()</span>
+</span><span id="__span-31-24"><a id="__codelineno-31-24" name="__codelineno-31-24" href="#__codelineno-31-24"></a>
+</span><span id="__span-31-25"><a id="__codelineno-31-25" name="__codelineno-31-25" href="#__codelineno-31-25"></a><span class="w">  </span><span class="nx">app</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'activate'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-31-26"><a id="__codelineno-31-26" name="__codelineno-31-26" href="#__codelineno-31-26"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">BrowserWindow</span><span class="p">.</span><span class="nx">getAllWindows</span><span class="p">().</span><span class="nx">length</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="nx">createWindow</span><span class="p">()</span>
+</span><span id="__span-31-27"><a id="__codelineno-31-27" name="__codelineno-31-27" href="#__codelineno-31-27"></a><span class="w">  </span><span class="p">})</span>
+</span><span id="__span-31-28"><a id="__codelineno-31-28" name="__codelineno-31-28" href="#__codelineno-31-28"></a><span class="p">})</span>
+</span><span id="__span-31-29"><a id="__codelineno-31-29" name="__codelineno-31-29" href="#__codelineno-31-29"></a>
+</span><span id="__span-31-30"><a id="__codelineno-31-30" name="__codelineno-31-30" href="#__codelineno-31-30"></a><span class="nx">app</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'window-all-closed'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-31-31"><a id="__codelineno-31-31" name="__codelineno-31-31" href="#__codelineno-31-31"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">platform</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="s1">'darwin'</span><span class="p">)</span><span class="w"> </span><span class="nx">app</span><span class="p">.</span><span class="nx">quit</span><span class="p">()</span>
+</span><span id="__span-31-32"><a id="__codelineno-31-32" name="__codelineno-31-32" href="#__codelineno-31-32"></a><span class="p">})</span>
+</span></code></pre></div>
+<p>ESM 主进程没有 <code>__dirname</code>，用 <code>fileURLToPath(import.meta.url)</code> 重建。preload 使用 <code>preload.cjs</code>；沙盒化 preload 以 CommonJS 运行，<code>.cjs</code> 后缀让 Node 按 CJS 解析。</p>
+<h3 id="33-preload">3.3 preload 与渲染页面</h3>
+<p><code>src/preload.cjs</code>：</p>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">contextBridge</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">'electron'</span><span class="p">)</span>
+</span><span id="__span-32-2"><a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>
+</span><span id="__span-32-3"><a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a><span class="nx">contextBridge</span><span class="p">.</span><span class="nx">exposeInMainWorld</span><span class="p">(</span><span class="s1">'versions'</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-32-4"><a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a><span class="w">  </span><span class="nx">electron</span><span class="o">:</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">versions</span><span class="p">.</span><span class="nx">electron</span><span class="p">,</span>
+</span><span id="__span-32-5"><a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a><span class="w">  </span><span class="nx">chrome</span><span class="o">:</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">versions</span><span class="p">.</span><span class="nx">chrome</span><span class="p">,</span>
+</span><span id="__span-32-6"><a id="__codelineno-32-6" name="__codelineno-32-6" href="#__codelineno-32-6"></a><span class="w">  </span><span class="nx">node</span><span class="o">:</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">versions</span><span class="p">.</span><span class="nx">node</span>
+</span><span id="__span-32-7"><a id="__codelineno-32-7" name="__codelineno-32-7" href="#__codelineno-32-7"></a><span class="p">})</span>
+</span></code></pre></div>
+<p><code>src/renderer/index.html</code> 通过 CSP 限制脚本与样式来源：</p>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="cp">&lt;!doctype html&gt;</span>
+</span><span id="__span-33-2"><a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a><span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">"zh-CN"</span><span class="p">&gt;</span>
+</span><span id="__span-33-3"><a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a>  <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+</span><span id="__span-33-4"><a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a>    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">"UTF-8"</span> <span class="p">/&gt;</span>
+</span><span id="__span-33-5"><a id="__codelineno-33-5" name="__codelineno-33-5" href="#__codelineno-33-5"></a>    <span class="p">&lt;</span><span class="nt">meta</span>
+</span><span id="__span-33-6"><a id="__codelineno-33-6" name="__codelineno-33-6" href="#__codelineno-33-6"></a>      <span class="na">http-equiv</span><span class="o">=</span><span class="s">"Content-Security-Policy"</span>
+</span><span id="__span-33-7"><a id="__codelineno-33-7" name="__codelineno-33-7" href="#__codelineno-33-7"></a>      <span class="na">content</span><span class="o">=</span><span class="s">"default-src 'self'; style-src 'self'; script-src 'self'"</span>
+</span><span id="__span-33-8"><a id="__codelineno-33-8" name="__codelineno-33-8" href="#__codelineno-33-8"></a>    <span class="p">/&gt;</span>
+</span><span id="__span-33-9"><a id="__codelineno-33-9" name="__codelineno-33-9" href="#__codelineno-33-9"></a>    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Electron 43 + pnpm 12<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+</span><span id="__span-33-10"><a id="__codelineno-33-10" name="__codelineno-33-10" href="#__codelineno-33-10"></a>    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">"stylesheet"</span> <span class="na">href</span><span class="o">=</span><span class="s">"./style.css"</span> <span class="p">/&gt;</span>
+</span><span id="__span-33-11"><a id="__codelineno-33-11" name="__codelineno-33-11" href="#__codelineno-33-11"></a>  <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+</span><span id="__span-33-12"><a id="__codelineno-33-12" name="__codelineno-33-12" href="#__codelineno-33-12"></a>  <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+</span><span id="__span-33-13"><a id="__codelineno-33-13" name="__codelineno-33-13" href="#__codelineno-33-13"></a>    <span class="p">&lt;</span><span class="nt">main</span><span class="p">&gt;</span>
+</span><span id="__span-33-14"><a id="__codelineno-33-14" name="__codelineno-33-14" href="#__codelineno-33-14"></a>      <span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">"eyebrow"</span><span class="p">&gt;</span>WSL2 · Debian · WSLg<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</span><span id="__span-33-15"><a id="__codelineno-33-15" name="__codelineno-33-15" href="#__codelineno-33-15"></a>      <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Electron 43 + pnpm 12<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+</span><span id="__span-33-16"><a id="__codelineno-33-16" name="__codelineno-33-16" href="#__codelineno-33-16"></a>      <span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">"lead"</span><span class="p">&gt;</span>由 pnpm 手工初始化的最小应用。<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</span><span id="__span-33-17"><a id="__codelineno-33-17" name="__codelineno-33-17" href="#__codelineno-33-17"></a>      <span class="p">&lt;</span><span class="nt">dl</span> <span class="na">id</span><span class="o">=</span><span class="s">"versions"</span><span class="p">&gt;&lt;/</span><span class="nt">dl</span><span class="p">&gt;</span>
+</span><span id="__span-33-18"><a id="__codelineno-33-18" name="__codelineno-33-18" href="#__codelineno-33-18"></a>    <span class="p">&lt;/</span><span class="nt">main</span><span class="p">&gt;</span>
+</span><span id="__span-33-19"><a id="__codelineno-33-19" name="__codelineno-33-19" href="#__codelineno-33-19"></a>    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">"./renderer.js"</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span><span id="__span-33-20"><a id="__codelineno-33-20" name="__codelineno-33-20" href="#__codelineno-33-20"></a>  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</span><span id="__span-33-21"><a id="__codelineno-33-21" name="__codelineno-33-21" href="#__codelineno-33-21"></a><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</span></code></pre></div>
+<p><code>src/renderer/renderer.js</code> 读取 <code>window.versions</code> 并写入页面：</p>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">exposedVersions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">window</span><span class="p">.</span><span class="nx">versions</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="p">{}</span>
+</span><span id="__span-34-2"><a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">rows</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-34-3"><a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a><span class="w">  </span><span class="p">[</span><span class="s1">'Electron'</span><span class="p">,</span><span class="w"> </span><span class="nx">exposedVersions</span><span class="p">.</span><span class="nx">electron</span><span class="p">],</span>
+</span><span id="__span-34-4"><a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a><span class="w">  </span><span class="p">[</span><span class="s1">'Chromium'</span><span class="p">,</span><span class="w"> </span><span class="nx">exposedVersions</span><span class="p">.</span><span class="nx">chrome</span><span class="p">],</span>
+</span><span id="__span-34-5"><a id="__codelineno-34-5" name="__codelineno-34-5" href="#__codelineno-34-5"></a><span class="w">  </span><span class="p">[</span><span class="s1">'Node.js'</span><span class="p">,</span><span class="w"> </span><span class="nx">exposedVersions</span><span class="p">.</span><span class="nx">node</span><span class="p">]</span>
+</span><span id="__span-34-6"><a id="__codelineno-34-6" name="__codelineno-34-6" href="#__codelineno-34-6"></a><span class="p">]</span>
+</span><span id="__span-34-7"><a id="__codelineno-34-7" name="__codelineno-34-7" href="#__codelineno-34-7"></a>
+</span><span id="__span-34-8"><a id="__codelineno-34-8" name="__codelineno-34-8" href="#__codelineno-34-8"></a><span class="kd">const</span><span class="w"> </span><span class="nx">list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'#versions'</span><span class="p">)</span>
+</span><span id="__span-34-9"><a id="__codelineno-34-9" name="__codelineno-34-9" href="#__codelineno-34-9"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">label</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">]</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">rows</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-34-10"><a id="__codelineno-34-10" name="__codelineno-34-10" href="#__codelineno-34-10"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">dt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'dt'</span><span class="p">)</span>
+</span><span id="__span-34-11"><a id="__codelineno-34-11" name="__codelineno-34-11" href="#__codelineno-34-11"></a><span class="w">  </span><span class="nx">dt</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">label</span>
+</span><span id="__span-34-12"><a id="__codelineno-34-12" name="__codelineno-34-12" href="#__codelineno-34-12"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">dd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'dd'</span><span class="p">)</span>
+</span><span id="__span-34-13"><a id="__codelineno-34-13" name="__codelineno-34-13" href="#__codelineno-34-13"></a><span class="w">  </span><span class="nx">dd</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">value</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="s1">'unavailable'</span>
+</span><span id="__span-34-14"><a id="__codelineno-34-14" name="__codelineno-34-14" href="#__codelineno-34-14"></a><span class="w">  </span><span class="nx">list</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">dt</span><span class="p">,</span><span class="w"> </span><span class="nx">dd</span><span class="p">)</span>
+</span><span id="__span-34-15"><a id="__codelineno-34-15" name="__codelineno-34-15" href="#__codelineno-34-15"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>这里不要把局部变量命名为 <code>versions</code>。preload 通过 <code>contextBridge</code> 暴露的 <code>window.versions</code> 是一个全局属性，渲染脚本里再写 <code>const versions</code> 会抛出 <code>Identifier 'versions' has already been declared</code>。换一个局部变量名即可。</p>
+<p><code>src/renderer/style.css</code>：</p>
+<div class="language-css highlight"><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="p">:</span><span class="nd">root</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-35-2"><a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a><span class="w">  </span><span class="k">color-scheme</span><span class="p">:</span><span class="w"> </span><span class="n">dark</span><span class="p">;</span>
+</span><span id="__span-35-3"><a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a><span class="w">  </span><span class="k">font-family</span><span class="p">:</span><span class="w"> </span><span class="n">ui-sans-serif</span><span class="p">,</span><span class="w"> </span><span class="n">system-ui</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="n">apple-system</span><span class="p">,</span><span class="w"> </span><span class="s2">"Segoe UI"</span><span class="p">,</span><span class="w"> </span><span class="kc">sans-serif</span><span class="p">;</span>
+</span><span id="__span-35-4"><a id="__codelineno-35-4" name="__codelineno-35-4" href="#__codelineno-35-4"></a><span class="w">  </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="mh">#0f172a</span><span class="p">;</span>
+</span><span id="__span-35-5"><a id="__codelineno-35-5" name="__codelineno-35-5" href="#__codelineno-35-5"></a><span class="w">  </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#e2e8f0</span><span class="p">;</span>
+</span><span id="__span-35-6"><a id="__codelineno-35-6" name="__codelineno-35-6" href="#__codelineno-35-6"></a><span class="p">}</span>
+</span><span id="__span-35-7"><a id="__codelineno-35-7" name="__codelineno-35-7" href="#__codelineno-35-7"></a>
+</span><span id="__span-35-8"><a id="__codelineno-35-8" name="__codelineno-35-8" href="#__codelineno-35-8"></a><span class="nt">body</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-35-9"><a id="__codelineno-35-9" name="__codelineno-35-9" href="#__codelineno-35-9"></a><span class="w">  </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-35-10"><a id="__codelineno-35-10" name="__codelineno-35-10" href="#__codelineno-35-10"></a><span class="w">  </span><span class="k">min-height</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">vh</span><span class="p">;</span>
+</span><span id="__span-35-11"><a id="__codelineno-35-11" name="__codelineno-35-11" href="#__codelineno-35-11"></a><span class="w">  </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="k">grid</span><span class="p">;</span>
+</span><span id="__span-35-12"><a id="__codelineno-35-12" name="__codelineno-35-12" href="#__codelineno-35-12"></a><span class="w">  </span><span class="k">place-items</span><span class="p">:</span><span class="w"> </span><span class="kc">center</span><span class="p">;</span>
+</span><span id="__span-35-13"><a id="__codelineno-35-13" name="__codelineno-35-13" href="#__codelineno-35-13"></a><span class="p">}</span>
+</span><span id="__span-35-14"><a id="__codelineno-35-14" name="__codelineno-35-14" href="#__codelineno-35-14"></a>
+</span><span id="__span-35-15"><a id="__codelineno-35-15" name="__codelineno-35-15" href="#__codelineno-35-15"></a><span class="nt">main</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-35-16"><a id="__codelineno-35-16" name="__codelineno-35-16" href="#__codelineno-35-16"></a><span class="w">  </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="nf">min</span><span class="p">(</span><span class="mi">640</span><span class="kt">px</span><span class="p">,</span><span class="w"> </span><span class="mi">82</span><span class="kt">vw</span><span class="p">);</span>
+</span><span id="__span-35-17"><a id="__codelineno-35-17" name="__codelineno-35-17" href="#__codelineno-35-17"></a><span class="p">}</span>
+</span><span id="__span-35-18"><a id="__codelineno-35-18" name="__codelineno-35-18" href="#__codelineno-35-18"></a>
+</span><span id="__span-35-19"><a id="__codelineno-35-19" name="__codelineno-35-19" href="#__codelineno-35-19"></a><span class="p">.</span><span class="nc">eyebrow</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-35-20"><a id="__codelineno-35-20" name="__codelineno-35-20" href="#__codelineno-35-20"></a><span class="w">  </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mf">0.75</span><span class="kt">rem</span><span class="p">;</span>
+</span><span id="__span-35-21"><a id="__codelineno-35-21" name="__codelineno-35-21" href="#__codelineno-35-21"></a><span class="w">  </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#7dd3fc</span><span class="p">;</span>
+</span><span id="__span-35-22"><a id="__codelineno-35-22" name="__codelineno-35-22" href="#__codelineno-35-22"></a><span class="w">  </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="mf">0.78</span><span class="kt">rem</span><span class="p">;</span>
+</span><span id="__span-35-23"><a id="__codelineno-35-23" name="__codelineno-35-23" href="#__codelineno-35-23"></a><span class="w">  </span><span class="k">letter-spacing</span><span class="p">:</span><span class="w"> </span><span class="mf">0.16</span><span class="kt">em</span><span class="p">;</span>
+</span><span id="__span-35-24"><a id="__codelineno-35-24" name="__codelineno-35-24" href="#__codelineno-35-24"></a><span class="w">  </span><span class="k">text-transform</span><span class="p">:</span><span class="w"> </span><span class="kc">uppercase</span><span class="p">;</span>
+</span><span id="__span-35-25"><a id="__codelineno-35-25" name="__codelineno-35-25" href="#__codelineno-35-25"></a><span class="p">}</span>
+</span><span id="__span-35-26"><a id="__codelineno-35-26" name="__codelineno-35-26" href="#__codelineno-35-26"></a>
+</span><span id="__span-35-27"><a id="__codelineno-35-27" name="__codelineno-35-27" href="#__codelineno-35-27"></a><span class="nt">h1</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-35-28"><a id="__codelineno-35-28" name="__codelineno-35-28" href="#__codelineno-35-28"></a><span class="w">  </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mf">0.5</span><span class="kt">rem</span><span class="p">;</span>
+</span><span id="__span-35-29"><a id="__codelineno-35-29" name="__codelineno-35-29" href="#__codelineno-35-29"></a><span class="w">  </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="nf">clamp</span><span class="p">(</span><span class="mi">2</span><span class="kt">rem</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="kt">vw</span><span class="p">,</span><span class="w"> </span><span class="mf">3.4</span><span class="kt">rem</span><span class="p">);</span>
+</span><span id="__span-35-30"><a id="__codelineno-35-30" name="__codelineno-35-30" href="#__codelineno-35-30"></a><span class="w">  </span><span class="k">line-height</span><span class="p">:</span><span class="w"> </span><span class="mf">1.05</span><span class="p">;</span>
+</span><span id="__span-35-31"><a id="__codelineno-35-31" name="__codelineno-35-31" href="#__codelineno-35-31"></a><span class="p">}</span>
+</span><span id="__span-35-32"><a id="__codelineno-35-32" name="__codelineno-35-32" href="#__codelineno-35-32"></a>
+</span><span id="__span-35-33"><a id="__codelineno-35-33" name="__codelineno-35-33" href="#__codelineno-35-33"></a><span class="p">.</span><span class="nc">lead</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-35-34"><a id="__codelineno-35-34" name="__codelineno-35-34" href="#__codelineno-35-34"></a><span class="w">  </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">2</span><span class="kt">rem</span><span class="p">;</span>
+</span><span id="__span-35-35"><a id="__codelineno-35-35" name="__codelineno-35-35" href="#__codelineno-35-35"></a><span class="w">  </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#94a3b8</span><span class="p">;</span>
+</span><span id="__span-35-36"><a id="__codelineno-35-36" name="__codelineno-35-36" href="#__codelineno-35-36"></a><span class="p">}</span>
+</span><span id="__span-35-37"><a id="__codelineno-35-37" name="__codelineno-35-37" href="#__codelineno-35-37"></a>
+</span><span id="__span-35-38"><a id="__codelineno-35-38" name="__codelineno-35-38" href="#__codelineno-35-38"></a><span class="nt">dl</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-35-39"><a id="__codelineno-35-39" name="__codelineno-35-39" href="#__codelineno-35-39"></a><span class="w">  </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="k">grid</span><span class="p">;</span>
+</span><span id="__span-35-40"><a id="__codelineno-35-40" name="__codelineno-35-40" href="#__codelineno-35-40"></a><span class="w">  </span><span class="k">grid-template-columns</span><span class="p">:</span><span class="w"> </span><span class="n">max-content</span><span class="w"> </span><span class="mi">1</span><span class="n">fr</span><span class="p">;</span>
+</span><span id="__span-35-41"><a id="__codelineno-35-41" name="__codelineno-35-41" href="#__codelineno-35-41"></a><span class="w">  </span><span class="k">gap</span><span class="p">:</span><span class="w"> </span><span class="mf">0.65</span><span class="kt">rem</span><span class="w"> </span><span class="mf">1.5</span><span class="kt">rem</span><span class="p">;</span>
+</span><span id="__span-35-42"><a id="__codelineno-35-42" name="__codelineno-35-42" href="#__codelineno-35-42"></a><span class="w">  </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-35-43"><a id="__codelineno-35-43" name="__codelineno-35-43" href="#__codelineno-35-43"></a><span class="w">  </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mf">1.25</span><span class="kt">rem</span><span class="w"> </span><span class="mf">1.5</span><span class="kt">rem</span><span class="p">;</span>
+</span><span id="__span-35-44"><a id="__codelineno-35-44" name="__codelineno-35-44" href="#__codelineno-35-44"></a><span class="w">  </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="mh">#1e293b</span><span class="p">;</span>
+</span><span id="__span-35-45"><a id="__codelineno-35-45" name="__codelineno-35-45" href="#__codelineno-35-45"></a><span class="w">  </span><span class="k">border-radius</span><span class="p">:</span><span class="w"> </span><span class="mf">0.9</span><span class="kt">rem</span><span class="p">;</span>
+</span><span id="__span-35-46"><a id="__codelineno-35-46" name="__codelineno-35-46" href="#__codelineno-35-46"></a><span class="w">  </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="mh">#111c33</span><span class="p">;</span>
+</span><span id="__span-35-47"><a id="__codelineno-35-47" name="__codelineno-35-47" href="#__codelineno-35-47"></a><span class="p">}</span>
+</span><span id="__span-35-48"><a id="__codelineno-35-48" name="__codelineno-35-48" href="#__codelineno-35-48"></a>
+</span><span id="__span-35-49"><a id="__codelineno-35-49" name="__codelineno-35-49" href="#__codelineno-35-49"></a><span class="nt">dt</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-35-50"><a id="__codelineno-35-50" name="__codelineno-35-50" href="#__codelineno-35-50"></a><span class="w">  </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#94a3b8</span><span class="p">;</span>
+</span><span id="__span-35-51"><a id="__codelineno-35-51" name="__codelineno-35-51" href="#__codelineno-35-51"></a><span class="p">}</span>
+</span><span id="__span-35-52"><a id="__codelineno-35-52" name="__codelineno-35-52" href="#__codelineno-35-52"></a>
+</span><span id="__span-35-53"><a id="__codelineno-35-53" name="__codelineno-35-53" href="#__codelineno-35-53"></a><span class="nt">dd</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-35-54"><a id="__codelineno-35-54" name="__codelineno-35-54" href="#__codelineno-35-54"></a><span class="w">  </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-35-55"><a id="__codelineno-35-55" name="__codelineno-35-55" href="#__codelineno-35-55"></a><span class="w">  </span><span class="k">font-variant-numeric</span><span class="p">:</span><span class="w"> </span><span class="n">tabular-nums</span><span class="p">;</span>
+</span><span id="__span-35-56"><a id="__codelineno-35-56" name="__codelineno-35-56" href="#__codelineno-35-56"></a><span class="p">}</span>
+</span></code></pre></div>
+<p><code>contextIsolation: true</code> 与 <code>sandbox: true</code> 让渲染进程只能通过 preload 暴露的对象读取运行时版本。</p>
+<h3 id="34">3.4 启动与验证</h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-36-1"><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>pnpm<span class="w"> </span>start
+</span></code></pre></div>
+<p>实际输出：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-37-1"><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>$ electron . --no-sandbox --disable-dev-shm-usage
+</span><span id="__span-37-2"><a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a>Downloading Electron binary...
+</span></code></pre></div>
+<p>随后窗口保持打开，终端没有 <code>libGLESv2.so</code> 权限错误。通过远程调试接口检查页面和 preload：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-38-1"><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>./node_modules/.bin/electron<span class="w"> </span>--remote-debugging-port<span class="o">=</span><span class="m">9225</span><span class="w"> </span>.<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-38-2"><a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a><span class="w">  </span>--no-sandbox<span class="w"> </span>--disable-dev-shm-usage
+</span></code></pre></div>
+<p>页面返回：</p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-39-1"><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="p">{</span>
+</span><span id="__span-39-2"><a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a><span class="w">  </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Electron 43 + pnpm 12"</span><span class="p">,</span>
+</span><span id="__span-39-3"><a id="__codelineno-39-3" name="__codelineno-39-3" href="#__codelineno-39-3"></a><span class="w">  </span><span class="nt">"h1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Electron 43 + pnpm 12"</span><span class="p">,</span>
+</span><span id="__span-39-4"><a id="__codelineno-39-4" name="__codelineno-39-4" href="#__codelineno-39-4"></a><span class="w">  </span><span class="nt">"versions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-39-5"><a id="__codelineno-39-5" name="__codelineno-39-5" href="#__codelineno-39-5"></a><span class="w">    </span><span class="nt">"electron"</span><span class="p">:</span><span class="w"> </span><span class="s2">"43.8.3"</span><span class="p">,</span>
+</span><span id="__span-39-6"><a id="__codelineno-39-6" name="__codelineno-39-6" href="#__codelineno-39-6"></a><span class="w">    </span><span class="nt">"chrome"</span><span class="p">:</span><span class="w"> </span><span class="s2">"150.0.7871.250"</span><span class="p">,</span>
+</span><span id="__span-39-7"><a id="__codelineno-39-7" name="__codelineno-39-7" href="#__codelineno-39-7"></a><span class="w">    </span><span class="nt">"node"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24.22.0"</span>
+</span><span id="__span-39-8"><a id="__codelineno-39-8" name="__codelineno-39-8" href="#__codelineno-39-8"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-39-9"><a id="__codelineno-39-9" name="__codelineno-39-9" href="#__codelineno-39-9"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>这组值同时验证了主进程、preload 桥接和渲染进程三层。</p>
+<p><img alt="手工初始化路径启动后的窗口" src="../../assets/electron-tutorials/00-electron-init/01-manual.png" /></p>
+<p><em>图 1：<code>project/01-manual</code> 启动后的窗口，页面显示 Electron、Chromium 与 Node.js 版本。</em></p>
+<h3 id="35">3.5 目录树</h3>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-40-1"><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>01-manual
+</span><span id="__span-40-2"><a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a>├── src
+</span><span id="__span-40-3"><a id="__codelineno-40-3" name="__codelineno-40-3" href="#__codelineno-40-3"></a>│   ├── renderer
+</span><span id="__span-40-4"><a id="__codelineno-40-4" name="__codelineno-40-4" href="#__codelineno-40-4"></a>│   │   ├── index.html
+</span><span id="__span-40-5"><a id="__codelineno-40-5" name="__codelineno-40-5" href="#__codelineno-40-5"></a>│   │   ├── renderer.js
+</span><span id="__span-40-6"><a id="__codelineno-40-6" name="__codelineno-40-6" href="#__codelineno-40-6"></a>│   │   └── style.css
+</span><span id="__span-40-7"><a id="__codelineno-40-7" name="__codelineno-40-7" href="#__codelineno-40-7"></a>│   ├── main.js
+</span><span id="__span-40-8"><a id="__codelineno-40-8" name="__codelineno-40-8" href="#__codelineno-40-8"></a>│   └── preload.cjs
+</span><span id="__span-40-9"><a id="__codelineno-40-9" name="__codelineno-40-9" href="#__codelineno-40-9"></a>├── .gitignore
+</span><span id="__span-40-10"><a id="__codelineno-40-10" name="__codelineno-40-10" href="#__codelineno-40-10"></a>├── .nvmrc
+</span><span id="__span-40-11"><a id="__codelineno-40-11" name="__codelineno-40-11" href="#__codelineno-40-11"></a>├── package.json
+</span><span id="__span-40-12"><a id="__codelineno-40-12" name="__codelineno-40-12" href="#__codelineno-40-12"></a>├── pnpm-lock.yaml
+</span><span id="__span-40-13"><a id="__codelineno-40-13" name="__codelineno-40-13" href="#__codelineno-40-13"></a>├── pnpm-workspace.yaml
+</span><span id="__span-40-14"><a id="__codelineno-40-14" name="__codelineno-40-14" href="#__codelineno-40-14"></a>└── README.md
+</span><span id="__span-40-15"><a id="__codelineno-40-15" name="__codelineno-40-15" href="#__codelineno-40-15"></a>
+</span><span id="__span-40-16"><a id="__codelineno-40-16" name="__codelineno-40-16" href="#__codelineno-40-16"></a>3 directories, 11 files
+</span></code></pre></div>
+<p><code>package.json</code> 是项目入口与脚本；<code>pnpm-workspace.yaml</code> 承载 pnpm 12 的构建脚本放行；<code>pnpm-lock.yaml</code> 固定 Electron 的解析结果；<code>.nvmrc</code> 固定 Node 22.23.2。<code>src/</code> 下的三个区域分别对应主进程、preload 和渲染进程。</p>
+<h2 id="4-belectron-forge">4. 路径 B：Electron Forge</h2>
+<p>沙箱位置：<code>project/02-forge</code>。</p>
+<h3 id="41">4.1 脚手架命令</h3>
+<p>Forge 8 把模板拆成了 <code>--template</code> 与 <code>--typescript</code> 两个选项。<code>vite-typescript</code> 这个旧别名已经不存在，使用它会得到：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-41-1"><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a>The "vite-typescript" template no longer exists. Use "--template vite --typescript" instead.
+</span></code></pre></div>
+<p>实际命令：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-42-1"><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>project/02-forge
+</span><span id="__span-42-2"><a id="__codelineno-42-2" name="__codelineno-42-2" href="#__codelineno-42-2"></a><span class="nb">cd</span><span class="w"> </span>project/02-forge
+</span><span id="__span-42-3"><a id="__codelineno-42-3" name="__codelineno-42-3" href="#__codelineno-42-3"></a>pnpm<span class="w"> </span>create<span class="w"> </span>electron-app@latest<span class="w"> </span>.<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-42-4"><a id="__codelineno-42-4" name="__codelineno-42-4" href="#__codelineno-42-4"></a><span class="w">  </span>--template<span class="w"> </span>vite<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-42-5"><a id="__codelineno-42-5" name="__codelineno-42-5" href="#__codelineno-42-5"></a><span class="w">  </span>--typescript<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-42-6"><a id="__codelineno-42-6" name="__codelineno-42-6" href="#__codelineno-42-6"></a><span class="w">  </span>--electron-version<span class="w"> </span><span class="m">43</span>.8.3<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-42-7"><a id="__codelineno-42-7" name="__codelineno-42-7" href="#__codelineno-42-7"></a><span class="w">  </span>--package-manager<span class="w"> </span>pnpm<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-42-8"><a id="__codelineno-42-8" name="__codelineno-42-8" href="#__codelineno-42-8"></a><span class="w">  </span>--skip-git
+</span></code></pre></div>
+<p>脚手架会立即执行 <code>pnpm install</code>，安装 Forge 8、Vite 8、TypeScript 6 和 Electron 43.8.3，并生成 <code>pnpm-workspace.yaml</code>：</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-43-1"><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a><span class="nt">allowBuilds</span><span class="p">:</span>
+</span><span id="__span-43-2"><a id="__codelineno-43-2" name="__codelineno-43-2" href="#__codelineno-43-2"></a><span class="w">  </span><span class="nt">electron</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span><span id="__span-43-3"><a id="__codelineno-43-3" name="__codelineno-43-3" href="#__codelineno-43-3"></a><span class="w">  </span><span class="nt">electron-winstaller</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span><span id="__span-43-4"><a id="__codelineno-43-4" name="__codelineno-43-4" href="#__codelineno-43-4"></a>
+</span><span id="__span-43-5"><a id="__codelineno-43-5" name="__codelineno-43-5" href="#__codelineno-43-5"></a><span class="nt">nodeLinker</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hoisted</span>
+</span></code></pre></div>
+<p><code>electron-winstaller</code> 是 MakerSquirrel 的 peer 依赖；它的安装脚本需要选择 7-Zip 架构，因此在放行列表里。<code>nodeLinker: hoisted</code> 让顶层依赖成为真实目录，Forge 的打包器可以直接复制和遍历。</p>
+<p>Forge 的初始化要求目标目录为空，并在生成模板后立即执行安装。模板已经把 <code>allowBuilds</code> 与 <code>nodeLinker</code> 写好，Forge 路径因此不需要像手工路径那样先手动创建 <code>pnpm-workspace.yaml</code>。</p>
+<h3 id="42">4.2 校正包管理器字段</h3>
+<p>Forge 8 脚手架通过 Corepack 选择了当时的 <code>pnpm@latest</code>（本次为 12.15.0），并写入了一个字符串形式的 <code>devEngines.packageManager</code>。Corepack 会提示：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-44-1"><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a>! Corepack only supports objects as valid value for devEngines.packageManager.
+</span></code></pre></div>
+<p>把 <code>package.json</code> 中两个字段统一为 12.9.1 的对象形式：</p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-45-1"><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a><span class="p">{</span>
+</span><span id="__span-45-2"><a id="__codelineno-45-2" name="__codelineno-45-2" href="#__codelineno-45-2"></a><span class="w">  </span><span class="nt">"packageManager"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pnpm@12.9.1"</span><span class="p">,</span>
+</span><span id="__span-45-3"><a id="__codelineno-45-3" name="__codelineno-45-3" href="#__codelineno-45-3"></a><span class="w">  </span><span class="nt">"devEngines"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-45-4"><a id="__codelineno-45-4" name="__codelineno-45-4" href="#__codelineno-45-4"></a><span class="w">    </span><span class="nt">"packageManager"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-45-5"><a id="__codelineno-45-5" name="__codelineno-45-5" href="#__codelineno-45-5"></a><span class="w">      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pnpm"</span><span class="p">,</span>
+</span><span id="__span-45-6"><a id="__codelineno-45-6" name="__codelineno-45-6" href="#__codelineno-45-6"></a><span class="w">      </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12.9.1"</span><span class="p">,</span>
+</span><span id="__span-45-7"><a id="__codelineno-45-7" name="__codelineno-45-7" href="#__codelineno-45-7"></a><span class="w">      </span><span class="nt">"onFail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"download"</span>
+</span><span id="__span-45-8"><a id="__codelineno-45-8" name="__codelineno-45-8" href="#__codelineno-45-8"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-45-9"><a id="__codelineno-45-9" name="__codelineno-45-9" href="#__codelineno-45-9"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-45-10"><a id="__codelineno-45-10" name="__codelineno-45-10" href="#__codelineno-45-10"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>进入项目后确认：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-46-1"><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a>pnpm<span class="w"> </span>--version<span class="w">   </span><span class="c1"># 12.9.1</span>
+</span></code></pre></div>
+<h3 id="43">4.3 启动</h3>
+<p>Forge 启动脚本位于 <code>package.json</code>：</p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-47-1"><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a><span class="nt">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ELECTRON_DISABLE_SANDBOX=1 electron-forge start"</span>
+</span></code></pre></div>
+<p>以 root 直接运行 <code>electron-forge start</code> 会得到 Chromium 的 root 检查错误：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-48-1"><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a>FATAL:electron/shell/app/electron_main_delegate.cc:224] Running as root without --no-sandbox is not supported.
+</span></code></pre></div>
+<p><code>ELECTRON_DISABLE_SANDBOX=1</code> 让 Electron 以关闭沙盒的方式启动。普通用户可以删掉这个前缀。</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-49-1"><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a>pnpm<span class="w"> </span>start
+</span></code></pre></div>
+<p>实际输出包含 Forge 的构建过程：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-50-1"><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a>$ ELECTRON_DISABLE_SANDBOX=1 electron-forge start
+</span><span id="__span-50-2"><a id="__codelineno-50-2" name="__codelineno-50-2" href="#__codelineno-50-2"></a>✔ Found pnpm@12.9.1
+</span><span id="__span-50-3"><a id="__codelineno-50-3" name="__codelineno-50-3" href="#__codelineno-50-3"></a>[plugin-vite] target built src/preload.ts
+</span><span id="__span-50-4"><a id="__codelineno-50-4" name="__codelineno-50-4" href="#__codelineno-50-4"></a>[plugin-vite] target built src/main.ts
+</span></code></pre></div>
+<p>需要确认渲染进程日志时，加上 <code>ELECTRON_ENABLE_LOGGING=1</code>：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-51-1"><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a><span class="nv">ELECTRON_ENABLE_LOGGING</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>pnpm<span class="w"> </span>start
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-52-1"><a id="__codelineno-52-1" name="__codelineno-52-1" href="#__codelineno-52-1"></a>INFO:CONSOLE: "👋 This message is being logged by the renderer process, included via Vite"
+</span></code></pre></div>
+<p>渲染进程的 Vite 客户端连接成功，页面加载完成。日志里的 <code>WebGL1 blocklisted</code> 来自 WSLg 的软件渲染，不影响窗口。</p>
+<p><img alt="Electron Forge 路径启动后的窗口" src="../../assets/electron-tutorials/00-electron-init/02-forge.png" /></p>
+<p><em>图 2：<code>project/02-forge</code> 启动后的默认页面。</em></p>
+<h3 id="44">4.4 打包</h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-53-1"><a id="__codelineno-53-1" name="__codelineno-53-1" href="#__codelineno-53-1"></a>pnpm<span class="w"> </span>package
+</span></code></pre></div>
+<p>本次实际完成，产物位于：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-54-1"><a id="__codelineno-54-1" name="__codelineno-54-1" href="#__codelineno-54-1"></a>out/02-forge-linux-x64/02-forge
+</span></code></pre></div>
+<p>打包后的二进制同样可以启动，渲染进程会从 <code>app.asar</code> 中加载页面。首次打包会复制应用和依赖，耗时明显长于 <code>pnpm start</code>；本次产物约 317MB，验证后已清理 <code>out/</code>。<code>pnpm make</code> 在此基础上生成配置中启用的平台安装包。</p>
+<h3 id="45">4.5 目录树</h3>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-55-1"><a id="__codelineno-55-1" name="__codelineno-55-1" href="#__codelineno-55-1"></a>02-forge
+</span><span id="__span-55-2"><a id="__codelineno-55-2" name="__codelineno-55-2" href="#__codelineno-55-2"></a>├── src
+</span><span id="__span-55-3"><a id="__codelineno-55-3" name="__codelineno-55-3" href="#__codelineno-55-3"></a>│   ├── declarations.d.ts
+</span><span id="__span-55-4"><a id="__codelineno-55-4" name="__codelineno-55-4" href="#__codelineno-55-4"></a>│   ├── index.css
+</span><span id="__span-55-5"><a id="__codelineno-55-5" name="__codelineno-55-5" href="#__codelineno-55-5"></a>│   ├── main.ts
+</span><span id="__span-55-6"><a id="__codelineno-55-6" name="__codelineno-55-6" href="#__codelineno-55-6"></a>│   ├── preload.ts
+</span><span id="__span-55-7"><a id="__codelineno-55-7" name="__codelineno-55-7" href="#__codelineno-55-7"></a>│   └── renderer.ts
+</span><span id="__span-55-8"><a id="__codelineno-55-8" name="__codelineno-55-8" href="#__codelineno-55-8"></a>├── forge.config.mts
+</span><span id="__span-55-9"><a id="__codelineno-55-9" name="__codelineno-55-9" href="#__codelineno-55-9"></a>├── .gitignore
+</span><span id="__span-55-10"><a id="__codelineno-55-10" name="__codelineno-55-10" href="#__codelineno-55-10"></a>├── index.html
+</span><span id="__span-55-11"><a id="__codelineno-55-11" name="__codelineno-55-11" href="#__codelineno-55-11"></a>├── .nvmrc
+</span><span id="__span-55-12"><a id="__codelineno-55-12" name="__codelineno-55-12" href="#__codelineno-55-12"></a>├── .oxfmtrc.json
+</span><span id="__span-55-13"><a id="__codelineno-55-13" name="__codelineno-55-13" href="#__codelineno-55-13"></a>├── .oxlintrc.json
+</span><span id="__span-55-14"><a id="__codelineno-55-14" name="__codelineno-55-14" href="#__codelineno-55-14"></a>├── package.json
+</span><span id="__span-55-15"><a id="__codelineno-55-15" name="__codelineno-55-15" href="#__codelineno-55-15"></a>├── pnpm-lock.yaml
+</span><span id="__span-55-16"><a id="__codelineno-55-16" name="__codelineno-55-16" href="#__codelineno-55-16"></a>├── pnpm-workspace.yaml
+</span><span id="__span-55-17"><a id="__codelineno-55-17" name="__codelineno-55-17" href="#__codelineno-55-17"></a>├── README.md
+</span><span id="__span-55-18"><a id="__codelineno-55-18" name="__codelineno-55-18" href="#__codelineno-55-18"></a>├── tsconfig.json
+</span><span id="__span-55-19"><a id="__codelineno-55-19" name="__codelineno-55-19" href="#__codelineno-55-19"></a>├── vite.main.config.mts
+</span><span id="__span-55-20"><a id="__codelineno-55-20" name="__codelineno-55-20" href="#__codelineno-55-20"></a>├── vite.preload.config.mts
+</span><span id="__span-55-21"><a id="__codelineno-55-21" name="__codelineno-55-21" href="#__codelineno-55-21"></a>└── vite.renderer.config.mts
+</span><span id="__span-55-22"><a id="__codelineno-55-22" name="__codelineno-55-22" href="#__codelineno-55-22"></a>
+</span><span id="__span-55-23"><a id="__codelineno-55-23" name="__codelineno-55-23" href="#__codelineno-55-23"></a>2 directories, 19 files
+</span></code></pre></div>
+<ul>
+<li><code>forge.config.mts</code> 配置 Vite 插件、Squirrel/ZIP/Deb/RPM makers 和 Electron fuses。</li>
+<li><code>src/main.ts</code> 是主进程入口，开发时加载 <code>MAIN_WINDOW_VITE_DEV_SERVER_URL</code>，生产时加载打包后的页面。</li>
+<li><code>src/preload.ts</code>、<code>src/renderer.ts</code> 与 <code>index.html</code> 构成渲染侧。</li>
+<li>三个 <code>vite.*.config.mts</code> 分别构建 main、preload、renderer。</li>
+<li><code>pnpm-workspace.yaml</code> 与 <code>pnpm-lock.yaml</code> 分别承载 pnpm 12 的项目设置和依赖锁定。</li>
+</ul>
+<h2 id="5-celectron-vite">5. 路径 C：electron-vite</h2>
+<p>沙箱位置：<code>project/03-electron-vite</code>。</p>
+<h3 id="51">5.1 选择官方脚手架</h3>
+<p>electron-vite 官方脚手架是 <code>@quick-start/create-electron</code>：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-56-1"><a id="__codelineno-56-1" name="__codelineno-56-1" href="#__codelineno-56-1"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>project/03-electron-vite
+</span><span id="__span-56-2"><a id="__codelineno-56-2" name="__codelineno-56-2" href="#__codelineno-56-2"></a><span class="nb">cd</span><span class="w"> </span>project/03-electron-vite
+</span><span id="__span-56-3"><a id="__codelineno-56-3" name="__codelineno-56-3" href="#__codelineno-56-3"></a>pnpm<span class="w"> </span>create<span class="w"> </span>@quick-start/electron@latest<span class="w"> </span>.<span class="w"> </span>--template<span class="w"> </span>vanilla-ts<span class="w"> </span>--skip
+</span></code></pre></div>
+<p>目标目录是 <code>.</code> 时，脚手架仍会询问包名，输入：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-57-1"><a id="__codelineno-57-1" name="__codelineno-57-1" href="#__codelineno-57-1"></a>Package name: project-electron-vite
+</span></code></pre></div>
+<p><code>--skip</code> 跳过 updater、镜像等可选提示，也让脚手架不写 <code>.npmrc</code>。另一个命令 <code>pnpm create electron-vite</code> 指向 <code>create-electron-vite</code> 脚手架，它使用 <code>vite-plugin-electron</code>，模板中的 Electron 版本为 30；本教程采用 electron-vite 官方的 <code>@quick-start/create-electron</code>，构建工具为 electron-vite 6。</p>
+<h3 id="52-pnpm">5.2 安装前写入 pnpm 配置</h3>
+<p>脚手架生成源码后不会自动安装。先写基础配置：</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-58-1"><a id="__codelineno-58-1" name="__codelineno-58-1" href="#__codelineno-58-1"></a><span class="nt">allowBuilds</span><span class="p">:</span>
+</span><span id="__span-58-2"><a id="__codelineno-58-2" name="__codelineno-58-2" href="#__codelineno-58-2"></a><span class="w">  </span><span class="nt">electron</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span><span id="__span-58-3"><a id="__codelineno-58-3" name="__codelineno-58-3" href="#__codelineno-58-3"></a><span class="w">  </span><span class="nt">esbuild</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span><span id="__span-58-4"><a id="__codelineno-58-4" name="__codelineno-58-4" href="#__codelineno-58-4"></a>
+</span><span id="__span-58-5"><a id="__codelineno-58-5" name="__codelineno-58-5" href="#__codelineno-58-5"></a><span class="nt">nodeLinker</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hoisted</span>
+</span></code></pre></div>
+<p><code>esbuild</code> 为 Vite 生态中可能出现的构建脚本预留；<code>nodeLinker: hoisted</code> 供 electron-builder 在打包时遍历平铺的 <code>node_modules</code>。</p>
+<p>把 Electron 固定为 43.8.3，并把包管理器固定为 12.9.1：</p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-59-1"><a id="__codelineno-59-1" name="__codelineno-59-1" href="#__codelineno-59-1"></a><span class="p">{</span>
+</span><span id="__span-59-2"><a id="__codelineno-59-2" name="__codelineno-59-2" href="#__codelineno-59-2"></a><span class="w">  </span><span class="nt">"devDependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-59-3"><a id="__codelineno-59-3" name="__codelineno-59-3" href="#__codelineno-59-3"></a><span class="w">    </span><span class="nt">"electron"</span><span class="p">:</span><span class="w"> </span><span class="s2">"43.8.3"</span>
+</span><span id="__span-59-4"><a id="__codelineno-59-4" name="__codelineno-59-4" href="#__codelineno-59-4"></a><span class="w">  </span><span class="p">},</span>
+</span><span id="__span-59-5"><a id="__codelineno-59-5" name="__codelineno-59-5" href="#__codelineno-59-5"></a><span class="w">  </span><span class="nt">"packageManager"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pnpm@12.9.1"</span><span class="p">,</span>
+</span><span id="__span-59-6"><a id="__codelineno-59-6" name="__codelineno-59-6" href="#__codelineno-59-6"></a><span class="w">  </span><span class="nt">"devEngines"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-59-7"><a id="__codelineno-59-7" name="__codelineno-59-7" href="#__codelineno-59-7"></a><span class="w">    </span><span class="nt">"packageManager"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-59-8"><a id="__codelineno-59-8" name="__codelineno-59-8" href="#__codelineno-59-8"></a><span class="w">      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pnpm"</span><span class="p">,</span>
+</span><span id="__span-59-9"><a id="__codelineno-59-9" name="__codelineno-59-9" href="#__codelineno-59-9"></a><span class="w">      </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12.9.1"</span><span class="p">,</span>
+</span><span id="__span-59-10"><a id="__codelineno-59-10" name="__codelineno-59-10" href="#__codelineno-59-10"></a><span class="w">      </span><span class="nt">"onFail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"download"</span>
+</span><span id="__span-59-11"><a id="__codelineno-59-11" name="__codelineno-59-11" href="#__codelineno-59-11"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-59-12"><a id="__codelineno-59-12" name="__codelineno-59-12" href="#__codelineno-59-12"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-59-13"><a id="__codelineno-59-13" name="__codelineno-59-13" href="#__codelineno-59-13"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>安装：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-60-1"><a id="__codelineno-60-1" name="__codelineno-60-1" href="#__codelineno-60-1"></a>pnpm<span class="w"> </span>install
+</span></code></pre></div>
+<p>electron-builder 的依赖树里还有 <code>electron-winstaller</code>，它的安装脚本负责选择 7-Zip。首次安装会报该脚本未获批准：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-61-1"><a id="__codelineno-61-1" name="__codelineno-61-1" href="#__codelineno-61-1"></a>Error: ERR_PNPM_IGNORED_BUILDS
+</span><span id="__span-61-2"><a id="__codelineno-61-2" name="__codelineno-61-2" href="#__codelineno-61-2"></a>  × installing dependencies
+</span><span id="__span-61-3"><a id="__codelineno-61-3" name="__codelineno-61-3" href="#__codelineno-61-3"></a>  ╰─▶ Ignored build scripts: electron-winstaller@5.4.0
+</span></code></pre></div>
+<p>把 <code>electron-winstaller: true</code> 加入 <code>allowBuilds</code>，最终配置为：</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-62-1"><a id="__codelineno-62-1" name="__codelineno-62-1" href="#__codelineno-62-1"></a><span class="nt">allowBuilds</span><span class="p">:</span>
+</span><span id="__span-62-2"><a id="__codelineno-62-2" name="__codelineno-62-2" href="#__codelineno-62-2"></a><span class="w">  </span><span class="nt">electron</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span><span id="__span-62-3"><a id="__codelineno-62-3" name="__codelineno-62-3" href="#__codelineno-62-3"></a><span class="w">  </span><span class="nt">electron-winstaller</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span><span id="__span-62-4"><a id="__codelineno-62-4" name="__codelineno-62-4" href="#__codelineno-62-4"></a><span class="w">  </span><span class="nt">esbuild</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span><span id="__span-62-5"><a id="__codelineno-62-5" name="__codelineno-62-5" href="#__codelineno-62-5"></a>
+</span><span id="__span-62-6"><a id="__codelineno-62-6" name="__codelineno-62-6" href="#__codelineno-62-6"></a><span class="nt">nodeLinker</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hoisted</span>
+</span></code></pre></div>
+<p>重新执行 <code>pnpm install</code>，输出会包含：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-63-1"><a id="__codelineno-63-1" name="__codelineno-63-1" href="#__codelineno-63-1"></a>node_modules/electron-winstaller install$ node ./script/select-7z-arch.js
+</span><span id="__span-63-2"><a id="__codelineno-63-2" name="__codelineno-63-2" href="#__codelineno-63-2"></a>. postinstall$ install-electron &amp;&amp; electron-builder install-app-deps
+</span><span id="__span-63-3"><a id="__codelineno-63-3" name="__codelineno-63-3" href="#__codelineno-63-3"></a>• electron-builder version=26.18.0
+</span><span id="__span-63-4"><a id="__codelineno-63-4" name="__codelineno-63-4" href="#__codelineno-63-4"></a>• executing @electron/rebuild electronVersion=43.8.3 arch=x64
+</span><span id="__span-63-5"><a id="__codelineno-63-5" name="__codelineno-63-5" href="#__codelineno-63-5"></a>• completed installing native dependencies
+</span><span id="__span-63-6"><a id="__codelineno-63-6" name="__codelineno-63-6" href="#__codelineno-63-6"></a>Done in 626ms using pnpm v12.9.1
+</span></code></pre></div>
+<p>根 <code>postinstall</code> 由项目自身执行，负责下载 Electron 二进制并检查原生依赖。依赖包的构建脚本由 <code>allowBuilds</code> 放行。</p>
+<h3 id="53-pnpm">5.3 脚本改用 pnpm</h3>
+<p>脚手架原本在 <code>typecheck</code> 和 <code>build</code> 中调用 <code>npm run</code>。改成 pnpm 后：</p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-64-1"><a id="__codelineno-64-1" name="__codelineno-64-1" href="#__codelineno-64-1"></a><span class="p">{</span>
+</span><span id="__span-64-2"><a id="__codelineno-64-2" name="__codelineno-64-2" href="#__codelineno-64-2"></a><span class="w">  </span><span class="nt">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-64-3"><a id="__codelineno-64-3" name="__codelineno-64-3" href="#__codelineno-64-3"></a><span class="w">    </span><span class="nt">"dev"</span><span class="p">:</span><span class="w"> </span><span class="s2">"electron-vite dev --noSandbox"</span><span class="p">,</span>
+</span><span id="__span-64-4"><a id="__codelineno-64-4" name="__codelineno-64-4" href="#__codelineno-64-4"></a><span class="w">    </span><span class="nt">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"electron-vite preview --noSandbox"</span><span class="p">,</span>
+</span><span id="__span-64-5"><a id="__codelineno-64-5" name="__codelineno-64-5" href="#__codelineno-64-5"></a><span class="w">    </span><span class="nt">"build"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pnpm run typecheck &amp;&amp; electron-vite build"</span><span class="p">,</span>
+</span><span id="__span-64-6"><a id="__codelineno-64-6" name="__codelineno-64-6" href="#__codelineno-64-6"></a><span class="w">    </span><span class="nt">"typecheck"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pnpm run typecheck:node &amp;&amp; pnpm run typecheck:web"</span>
+</span><span id="__span-64-7"><a id="__codelineno-64-7" name="__codelineno-64-7" href="#__codelineno-64-7"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-64-8"><a id="__codelineno-64-8" name="__codelineno-64-8" href="#__codelineno-64-8"></a><span class="p">}</span>
+</span></code></pre></div>
+<p><code>--noSandbox</code> 适配 root/WSL2 环境；普通用户启用非特权用户命名空间后可以移除。<code>electron-vite</code> 的 <code>dev</code> 与 <code>preview</code> 都支持该参数。</p>
+<h3 id="54">5.4 开发、构建与预览</h3>
+<p>开发模式：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-65-1"><a id="__codelineno-65-1" name="__codelineno-65-1" href="#__codelineno-65-1"></a>pnpm<span class="w"> </span>dev
+</span></code></pre></div>
+<p>实际输出：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-66-1"><a id="__codelineno-66-1" name="__codelineno-66-1" href="#__codelineno-66-1"></a>vite v8.3.5 building ssr environment for development...
+</span><span id="__span-66-2"><a id="__codelineno-66-2" name="__codelineno-66-2" href="#__codelineno-66-2"></a>out/main/index.js  1.53 kB
+</span><span id="__span-66-3"><a id="__codelineno-66-3" name="__codelineno-66-3" href="#__codelineno-66-3"></a>out/preload/index.js  0.45 kB
+</span><span id="__span-66-4"><a id="__codelineno-66-4" name="__codelineno-66-4" href="#__codelineno-66-4"></a>dev server running for the electron renderer process at:
+</span><span id="__span-66-5"><a id="__codelineno-66-5" name="__codelineno-66-5" href="#__codelineno-66-5"></a>  ➜  Local:   http://localhost:5173/
+</span><span id="__span-66-6"><a id="__codelineno-66-6" name="__codelineno-66-6" href="#__codelineno-66-6"></a>starting electron app...
+</span></code></pre></div>
+<p>通过 <code>--remoteDebuggingPort</code> 检查渲染页面：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-67-1"><a id="__codelineno-67-1" name="__codelineno-67-1" href="#__codelineno-67-1"></a>title: Electron
+</span><span id="__span-67-2"><a id="__codelineno-67-2" name="__codelineno-67-2" href="#__codelineno-67-2"></a>url: http://localhost:5173/
+</span></code></pre></div>
+<p>生产构建：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-68-1"><a id="__codelineno-68-1" name="__codelineno-68-1" href="#__codelineno-68-1"></a>pnpm<span class="w"> </span>build
+</span></code></pre></div>
+<p>实际输出包含 main、preload、renderer 三个目标：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-69-1"><a id="__codelineno-69-1" name="__codelineno-69-1" href="#__codelineno-69-1"></a>out/main/index.js
+</span><span id="__span-69-2"><a id="__codelineno-69-2" name="__codelineno-69-2" href="#__codelineno-69-2"></a>out/preload/index.js
+</span><span id="__span-69-3"><a id="__codelineno-69-3" name="__codelineno-69-3" href="#__codelineno-69-3"></a>out/renderer/index.html
+</span><span id="__span-69-4"><a id="__codelineno-69-4" name="__codelineno-69-4" href="#__codelineno-69-4"></a>out/renderer/assets/index-*.js
+</span><span id="__span-69-5"><a id="__codelineno-69-5" name="__codelineno-69-5" href="#__codelineno-69-5"></a>out/renderer/assets/index-*.css
+</span></code></pre></div>
+<p>预览：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-70-1"><a id="__codelineno-70-1" name="__codelineno-70-1" href="#__codelineno-70-1"></a>pnpm<span class="w"> </span>start
+</span></code></pre></div>
+<p>进程保持运行；日志中的 <code>dri3 extension not supported</code> 与 WebGL 警告来自 WSLg 图形栈，界面正常显示。</p>
+<p><img alt="electron-vite 路径启动后的窗口" src="../../assets/electron-tutorials/00-electron-init/03-electron-vite.png" /></p>
+<p><em>图 3：<code>project/03-electron-vite</code> 启动后的默认页面。</em></p>
+<h3 id="55">5.5 目录树</h3>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-71-1"><a id="__codelineno-71-1" name="__codelineno-71-1" href="#__codelineno-71-1"></a>03-electron-vite
+</span><span id="__span-71-2"><a id="__codelineno-71-2" name="__codelineno-71-2" href="#__codelineno-71-2"></a>├── build
+</span><span id="__span-71-3"><a id="__codelineno-71-3" name="__codelineno-71-3" href="#__codelineno-71-3"></a>│   ├── entitlements.mac.plist
+</span><span id="__span-71-4"><a id="__codelineno-71-4" name="__codelineno-71-4" href="#__codelineno-71-4"></a>│   ├── icon.icns
+</span><span id="__span-71-5"><a id="__codelineno-71-5" name="__codelineno-71-5" href="#__codelineno-71-5"></a>│   ├── icon.ico
+</span><span id="__span-71-6"><a id="__codelineno-71-6" name="__codelineno-71-6" href="#__codelineno-71-6"></a>│   └── icon.png
+</span><span id="__span-71-7"><a id="__codelineno-71-7" name="__codelineno-71-7" href="#__codelineno-71-7"></a>├── resources
+</span><span id="__span-71-8"><a id="__codelineno-71-8" name="__codelineno-71-8" href="#__codelineno-71-8"></a>│   └── icon.png
+</span><span id="__span-71-9"><a id="__codelineno-71-9" name="__codelineno-71-9" href="#__codelineno-71-9"></a>├── src
+</span><span id="__span-71-10"><a id="__codelineno-71-10" name="__codelineno-71-10" href="#__codelineno-71-10"></a>│   ├── main
+</span><span id="__span-71-11"><a id="__codelineno-71-11" name="__codelineno-71-11" href="#__codelineno-71-11"></a>│   │   └── index.ts
+</span><span id="__span-71-12"><a id="__codelineno-71-12" name="__codelineno-71-12" href="#__codelineno-71-12"></a>│   ├── preload
+</span><span id="__span-71-13"><a id="__codelineno-71-13" name="__codelineno-71-13" href="#__codelineno-71-13"></a>│   │   ├── index.d.ts
+</span><span id="__span-71-14"><a id="__codelineno-71-14" name="__codelineno-71-14" href="#__codelineno-71-14"></a>│   │   └── index.ts
+</span><span id="__span-71-15"><a id="__codelineno-71-15" name="__codelineno-71-15" href="#__codelineno-71-15"></a>│   └── renderer
+</span><span id="__span-71-16"><a id="__codelineno-71-16" name="__codelineno-71-16" href="#__codelineno-71-16"></a>│       ├── assets
+</span><span id="__span-71-17"><a id="__codelineno-71-17" name="__codelineno-71-17" href="#__codelineno-71-17"></a>│       │   ├── base.css
+</span><span id="__span-71-18"><a id="__codelineno-71-18" name="__codelineno-71-18" href="#__codelineno-71-18"></a>│       │   ├── electron.svg
+</span><span id="__span-71-19"><a id="__codelineno-71-19" name="__codelineno-71-19" href="#__codelineno-71-19"></a>│       │   ├── main.css
+</span><span id="__span-71-20"><a id="__codelineno-71-20" name="__codelineno-71-20" href="#__codelineno-71-20"></a>│       │   └── wavy-lines.svg
+</span><span id="__span-71-21"><a id="__codelineno-71-21" name="__codelineno-71-21" href="#__codelineno-71-21"></a>│       ├── src
+</span><span id="__span-71-22"><a id="__codelineno-71-22" name="__codelineno-71-22" href="#__codelineno-71-22"></a>│       │   └── renderer.ts
+</span><span id="__span-71-23"><a id="__codelineno-71-23" name="__codelineno-71-23" href="#__codelineno-71-23"></a>│       └── index.html
+</span><span id="__span-71-24"><a id="__codelineno-71-24" name="__codelineno-71-24" href="#__codelineno-71-24"></a>├── .vscode
+</span><span id="__span-71-25"><a id="__codelineno-71-25" name="__codelineno-71-25" href="#__codelineno-71-25"></a>│   ├── extensions.json
+</span><span id="__span-71-26"><a id="__codelineno-71-26" name="__codelineno-71-26" href="#__codelineno-71-26"></a>│   ├── launch.json
+</span><span id="__span-71-27"><a id="__codelineno-71-27" name="__codelineno-71-27" href="#__codelineno-71-27"></a>│   └── settings.json
+</span><span id="__span-71-28"><a id="__codelineno-71-28" name="__codelineno-71-28" href="#__codelineno-71-28"></a>├── .editorconfig
+</span><span id="__span-71-29"><a id="__codelineno-71-29" name="__codelineno-71-29" href="#__codelineno-71-29"></a>├── electron-builder.yml
+</span><span id="__span-71-30"><a id="__codelineno-71-30" name="__codelineno-71-30" href="#__codelineno-71-30"></a>├── electron.vite.config.ts
+</span><span id="__span-71-31"><a id="__codelineno-71-31" name="__codelineno-71-31" href="#__codelineno-71-31"></a>├── eslint.config.mjs
+</span><span id="__span-71-32"><a id="__codelineno-71-32" name="__codelineno-71-32" href="#__codelineno-71-32"></a>├── .gitignore
+</span><span id="__span-71-33"><a id="__codelineno-71-33" name="__codelineno-71-33" href="#__codelineno-71-33"></a>├── .nvmrc
+</span><span id="__span-71-34"><a id="__codelineno-71-34" name="__codelineno-71-34" href="#__codelineno-71-34"></a>├── package.json
+</span><span id="__span-71-35"><a id="__codelineno-71-35" name="__codelineno-71-35" href="#__codelineno-71-35"></a>├── pnpm-lock.yaml
+</span><span id="__span-71-36"><a id="__codelineno-71-36" name="__codelineno-71-36" href="#__codelineno-71-36"></a>├── pnpm-workspace.yaml
+</span><span id="__span-71-37"><a id="__codelineno-71-37" name="__codelineno-71-37" href="#__codelineno-71-37"></a>├── .prettierignore
+</span><span id="__span-71-38"><a id="__codelineno-71-38" name="__codelineno-71-38" href="#__codelineno-71-38"></a>├── .prettierrc.yaml
+</span><span id="__span-71-39"><a id="__codelineno-71-39" name="__codelineno-71-39" href="#__codelineno-71-39"></a>├── README.md
+</span><span id="__span-71-40"><a id="__codelineno-71-40" name="__codelineno-71-40" href="#__codelineno-71-40"></a>├── tsconfig.json
+</span><span id="__span-71-41"><a id="__codelineno-71-41" name="__codelineno-71-41" href="#__codelineno-71-41"></a>├── tsconfig.node.json
+</span><span id="__span-71-42"><a id="__codelineno-71-42" name="__codelineno-71-42" href="#__codelineno-71-42"></a>└── tsconfig.web.json
+</span><span id="__span-71-43"><a id="__codelineno-71-43" name="__codelineno-71-43" href="#__codelineno-71-43"></a>
+</span><span id="__span-71-44"><a id="__codelineno-71-44" name="__codelineno-71-44" href="#__codelineno-71-44"></a>10 directories, 32 files
+</span></code></pre></div>
+<ul>
+<li><code>electron.vite.config.ts</code> 把 main、preload、renderer 分成三个构建目标。</li>
+<li><code>src/main/index.ts</code> 创建窗口；<code>src/preload/index.ts</code> 通过 <code>@electron-toolkit/preload</code> 暴露桥接对象；<code>src/renderer/</code> 是页面与资源。</li>
+<li><code>electron-builder.yml</code> 定义 Linux/Windows/macOS 打包目标，<code>build/</code> 与 <code>resources/</code> 提供图标和签名资源。</li>
+<li><code>pnpm-workspace.yaml</code> 放行 Electron、electron-winstaller、esbuild 的脚本，并启用 hoisted 布局。</li>
+</ul>
+<h2 id="6">6. 三条路径的适用场景</h2>
+<ul>
+<li>手工初始化：适合理解 Electron 的最小组成、验证 pnpm 12 配置，以及写教学样例。依赖少，每一层都能看到。</li>
+<li>Electron Forge：适合需要官方一体化工具链、makers 和 fuses 的桌面应用。Forge 负责开发、打包和安装包生成，Vite 插件负责构建。</li>
+<li>electron-vite：适合以 Vite 为中心的开发流，主进程、preload、渲染进程有清晰边界，HMR 与生产构建由 electron-vite 统一调度，打包交给 electron-builder。</li>
+</ul>
+<p>三个沙箱都固定 Electron 43.8.3 与 pnpm 12.9.1，切换路径时版本基线保持一致。</p>
+<h2 id="7">7. 版本信息放在哪里</h2>
+<p>项目通常把版本信息分散在几类文件中，各司其职：</p>
+<table>
+<thead>
+<tr>
+<th>文件</th>
+<th>作用</th>
+<th>示例项目</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>README.md</code></td>
+<td>人读的版本矩阵、环境前提、启动方式</td>
+<td><code>project/README.md</code> 与各沙箱 README</td>
+</tr>
+<tr>
+<td><code>.nvmrc</code></td>
+<td>nvm / fnm / asdf 读取的 Node 版本</td>
+<td>三个沙箱均为 <code>22.23.2</code>；需要固定整个项目时在 <code>project/</code> 再加一份</td>
+</tr>
+<tr>
+<td><code>package.json</code> 的 <code>engines</code></td>
+<td>Node、pnpm 的最低版本</td>
+<td><code>node &gt;=22.12.0</code>、<code>pnpm &gt;=12.9.0</code></td>
+</tr>
+<tr>
+<td><code>package.json</code> 的 <code>packageManager</code></td>
+<td>Corepack 使用的包管理器与版本</td>
+<td><code>pnpm@12.9.1</code></td>
+</tr>
+<tr>
+<td><code>package.json</code> 的 <code>devEngines</code></td>
+<td>包管理器版本策略</td>
+<td>对象形式，<code>onFail: "download"</code></td>
+</tr>
+<tr>
+<td><code>devDependencies</code></td>
+<td>Electron、Forge、electron-vite 的实际版本</td>
+<td><code>electron: "43.8.3"</code></td>
+</tr>
+<tr>
+<td><code>pnpm-workspace.yaml</code></td>
+<td>pnpm 12 的项目级设置</td>
+<td><code>allowBuilds</code>、<code>nodeLinker</code></td>
+</tr>
+<tr>
+<td><code>pnpm-lock.yaml</code></td>
+<td>完整依赖图的解析结果</td>
+<td>提交到版本库，CI 使用 frozen 安装</td>
+</tr>
+<tr>
+<td><code>forge.config.mts</code> / <code>electron-builder.yml</code></td>
+<td>打包目标、maker、asar/fuses 等</td>
+<td>两个脚手架各自维护</td>
+</tr>
+<tr>
+<td><code>.devcontainer/</code>、<code>Dockerfile</code></td>
+<td>可复现的容器环境</td>
+<td>固定基础镜像、Node 与 pnpm</td>
+</tr>
+<tr>
+<td>CI workflow</td>
+<td>实际执行的命令与版本矩阵</td>
+<td><code>pnpm install --frozen-lockfile</code>、<code>pnpm build</code></td>
+</tr>
+<tr>
+<td><code>.tool-versions</code> / <code>mise.toml</code></td>
+<td>asdf / mise 的版本声明</td>
+<td>与 <code>.nvmrc</code> 保持同一 Node 版本</td>
+</tr>
+<tr>
+<td>本教程正文</td>
+<td>记录三条初始化路径、验证结果与截图</td>
+<td>文章与 <code>docs/assets</code></td>
+</tr>
+</tbody>
+</table>
+<p>Code OSS / VS Code 的 Electron 版本由 <code>.npmrc</code> 的 <code>target</code> 指定，Node 版本由 <code>.nvmrc</code> 固定；<code>build/lib/electronVersion.ts</code> 读取目标版本，<code>build/lib/electron.ts</code> 下载对应制品，<code>build/checksums/electron.txt</code> 负责校验。根 <code>package.json</code> 不需要声明 <code>electron</code> 依赖。阅读一个 VS Code 稳定版时，切到对应 tag，再看 <code>.npmrc</code>、<code>.nvmrc</code> 与 <code>build/checksums/electron.txt</code>，就能得到该版本的构建基线。<code>product.json</code> 负责品牌与发布渠道。</p>
+<p>版本信息的使用原则：</p>
+<ol>
+<li>机器可读的版本放在 <code>package.json</code>、锁文件和环境声明里；README 展示矩阵并链接到这些文件。</li>
+<li>锁文件是依赖解析的唯一依据；CI 使用 <code>pnpm install --frozen-lockfile</code>，避免安装阶段静默升级。</li>
+<li>在 CI 里显式打印版本，便于排查：</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-72-1"><a id="__codelineno-72-1" name="__codelineno-72-1" href="#__codelineno-72-1"></a>node<span class="w"> </span>--version
+</span><span id="__span-72-2"><a id="__codelineno-72-2" name="__codelineno-72-2" href="#__codelineno-72-2"></a>pnpm<span class="w"> </span>--version
+</span><span id="__span-72-3"><a id="__codelineno-72-3" name="__codelineno-72-3" href="#__codelineno-72-3"></a>node<span class="w"> </span>-p<span class="w"> </span><span class="s2">"require('./node_modules/electron/package.json').version"</span>
+</span></code></pre></div>
+<ol>
+<li><code>.npmrc</code> 只放认证与 registry；pnpm 12 的项目设置写在 <code>pnpm-workspace.yaml</code>。</li>
+<li>版本升级与锁文件更新放在同一个提交里，README 的矩阵同步修改。</li>
+</ol>
+<h2 id="8">8. 验证记录</h2>
+<p>三个沙箱均已完成安装、启动和页面加载验证。目录树来自：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-73-1"><a id="__codelineno-73-1" name="__codelineno-73-1" href="#__codelineno-73-1"></a>tree<span class="w"> </span>-a<span class="w"> </span>-I<span class="w"> </span><span class="s1">'node_modules|out|.vite|dist'</span><span class="w"> </span>--dirsfirst
+</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th>路径</th>
+<th>验证命令</th>
+<th>观察结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>手工</td>
+<td><code>pnpm start</code></td>
+<td>Electron 43.8.3 启动，preload 暴露 Node 24.22.0 / Chromium 150</td>
+</tr>
+<tr>
+<td>Forge</td>
+<td><code>pnpm start</code></td>
+<td>Vite 构建 main/preload，渲染进程日志正常</td>
+</tr>
+<tr>
+<td>Forge</td>
+<td><code>pnpm package</code></td>
+<td>生成 <code>out/02-forge-linux-x64/02-forge</code>，打包二进制可启动</td>
+</tr>
+<tr>
+<td>electron-vite</td>
+<td><code>pnpm dev</code></td>
+<td>dev server <code>http://localhost:5173/</code>，Electron 页面加载</td>
+</tr>
+<tr>
+<td>electron-vite</td>
+<td><code>pnpm build</code> / <code>pnpm start</code></td>
+<td>三目标构建完成，preview 正常启动</td>
+</tr>
+</tbody>
+</table>
+<p>复现时先确认 <code>pnpm --version</code> 为 12.9.1，再进入各目录执行 <code>pnpm install --frozen-lockfile</code>。当前 root/WSL2 环境需要第 2 节的沙盒参数；项目文件本身不依赖 <code>ELECTRON_RUN_AS_NODE</code>。</p>
+<p>Forge 的打包产物在验证后已清理，执行 <code>pnpm package</code> 可以重新生成。electron-vite 的 <code>out/</code> 同样可以由 <code>pnpm build</code> 重建。</p>
+<h2 id="9">9. 常见问题</h2>
+<h3 id="browserwindow-app-undefined"><code>BrowserWindow</code> 没有导出，<code>app</code> 是 undefined</h3>
+<p>先检查环境变量：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-74-1"><a id="__codelineno-74-1" name="__codelineno-74-1" href="#__codelineno-74-1"></a>env<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>ELECTRON_RUN_AS_NODE
+</span></code></pre></div>
+<p><code>ELECTRON_RUN_AS_NODE=1</code> 会让 Electron 以纯 Node 运行，此时 <code>require('electron')</code> 返回 npm 包里的路径字符串，ESM 也只能看到 CommonJS 包装层。取消该变量后重新启动，<code>import { app, BrowserWindow } from 'electron'</code> 会恢复正常。</p>
+<h3 id="libglesv2so-permission-denied"><code>libGLESv2.so: Permission denied</code></h3>
+<p>按第 2.3 节检查 home 目录权限与 GPU 进程的 <code>CapEff</code>。以项目所有者运行，或 <code>chmod o+x</code> 开放目录遍历。</p>
+<h3 id="running-as-root-without-no-sandbox"><code>Running as root without --no-sandbox</code></h3>
+<p>root 环境使用对应的关闭参数，或改用普通用户并启用用户命名空间。</p>
+<h3 id="err_pnpm_ignored_builds"><code>ERR_PNPM_IGNORED_BUILDS</code></h3>
+<p>把报错中的包名加入 <code>pnpm-workspace.yaml</code> 的 <code>allowBuilds</code>：</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-75-1"><a id="__codelineno-75-1" name="__codelineno-75-1" href="#__codelineno-75-1"></a><span class="nt">allowBuilds</span><span class="p">:</span>
+</span><span id="__span-75-2"><a id="__codelineno-75-2" name="__codelineno-75-2" href="#__codelineno-75-2"></a><span class="w">  </span><span class="nt">electron-winstaller</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span></code></pre></div>
+<p>然后重新执行 <code>pnpm install</code>。</p>
+<h3 id="npmrc-node-linker"><code>.npmrc</code> 里的 <code>node-linker</code> 没有效果</h3>
+<p>pnpm 12 从 <code>pnpm-workspace.yaml</code> 读取布局设置：</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-76-1"><a id="__codelineno-76-1" name="__codelineno-76-1" href="#__codelineno-76-1"></a><span class="nt">nodeLinker</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hoisted</span>
+</span></code></pre></div>
+<h3 id="corepack-pnpm">Corepack 切换了 pnpm 版本</h3>
+<p>检查 <code>package.json</code> 的 <code>packageManager</code> 与 <code>devEngines.packageManager</code>。两者都使用 12.9.1，<code>devEngines</code> 使用对象形式。需要恢复全局默认时执行：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-77-1"><a id="__codelineno-77-1" name="__codelineno-77-1" href="#__codelineno-77-1"></a>corepack<span class="w"> </span>prepare<span class="w"> </span>pnpm@12.9.1<span class="w"> </span>--activate
+</span></code></pre></div>
+<h3 id="forge-0">Forge 启动失败但命令退出码为 0</h3>
+<p>Forge 把 Electron 的启动错误写在日志里，终端退出码不一定反映子进程状态。看到 <code>FATAL</code> 时直接检查 <code>pnpm start</code> 的完整输出，再确认沙盒参数。</p>
+<h3 id="webgl-blocklistdri3">WebGL blocklist、dri3 警告</h3>
+<p>WSLg 的 GPU 能力有限，2D 界面不受影响。需要 WebGL 时单独验证软件渲染；纯 2D 应用可以关闭硬件加速减少日志。</p>
+<h2 id="10">10. 速查</h2>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-78-1"><a id="__codelineno-78-1" name="__codelineno-78-1" href="#__codelineno-78-1"></a><span class="c1"># 版本</span>
+</span><span id="__span-78-2"><a id="__codelineno-78-2" name="__codelineno-78-2" href="#__codelineno-78-2"></a>node<span class="w"> </span>--version
+</span><span id="__span-78-3"><a id="__codelineno-78-3" name="__codelineno-78-3" href="#__codelineno-78-3"></a>pnpm<span class="w"> </span>--version
+</span><span id="__span-78-4"><a id="__codelineno-78-4" name="__codelineno-78-4" href="#__codelineno-78-4"></a>node<span class="w"> </span>-p<span class="w"> </span><span class="s2">"require('./node_modules/electron/package.json').version"</span>
+</span><span id="__span-78-5"><a id="__codelineno-78-5" name="__codelineno-78-5" href="#__codelineno-78-5"></a>
+</span><span id="__span-78-6"><a id="__codelineno-78-6" name="__codelineno-78-6" href="#__codelineno-78-6"></a><span class="c1"># 手工</span>
+</span><span id="__span-78-7"><a id="__codelineno-78-7" name="__codelineno-78-7" href="#__codelineno-78-7"></a><span class="nb">cd</span><span class="w"> </span>project/01-manual
+</span><span id="__span-78-8"><a id="__codelineno-78-8" name="__codelineno-78-8" href="#__codelineno-78-8"></a>pnpm<span class="w"> </span>install<span class="w"> </span>--frozen-lockfile
+</span><span id="__span-78-9"><a id="__codelineno-78-9" name="__codelineno-78-9" href="#__codelineno-78-9"></a>pnpm<span class="w"> </span>start
+</span><span id="__span-78-10"><a id="__codelineno-78-10" name="__codelineno-78-10" href="#__codelineno-78-10"></a>
+</span><span id="__span-78-11"><a id="__codelineno-78-11" name="__codelineno-78-11" href="#__codelineno-78-11"></a><span class="c1"># Forge</span>
+</span><span id="__span-78-12"><a id="__codelineno-78-12" name="__codelineno-78-12" href="#__codelineno-78-12"></a><span class="nb">cd</span><span class="w"> </span>project/02-forge
+</span><span id="__span-78-13"><a id="__codelineno-78-13" name="__codelineno-78-13" href="#__codelineno-78-13"></a>pnpm<span class="w"> </span>install<span class="w"> </span>--frozen-lockfile
+</span><span id="__span-78-14"><a id="__codelineno-78-14" name="__codelineno-78-14" href="#__codelineno-78-14"></a>pnpm<span class="w"> </span>start
+</span><span id="__span-78-15"><a id="__codelineno-78-15" name="__codelineno-78-15" href="#__codelineno-78-15"></a>pnpm<span class="w"> </span>package
+</span><span id="__span-78-16"><a id="__codelineno-78-16" name="__codelineno-78-16" href="#__codelineno-78-16"></a>
+</span><span id="__span-78-17"><a id="__codelineno-78-17" name="__codelineno-78-17" href="#__codelineno-78-17"></a><span class="c1"># electron-vite</span>
+</span><span id="__span-78-18"><a id="__codelineno-78-18" name="__codelineno-78-18" href="#__codelineno-78-18"></a><span class="nb">cd</span><span class="w"> </span>project/03-electron-vite
+</span><span id="__span-78-19"><a id="__codelineno-78-19" name="__codelineno-78-19" href="#__codelineno-78-19"></a>pnpm<span class="w"> </span>install<span class="w"> </span>--frozen-lockfile
+</span><span id="__span-78-20"><a id="__codelineno-78-20" name="__codelineno-78-20" href="#__codelineno-78-20"></a>pnpm<span class="w"> </span>dev
+</span><span id="__span-78-21"><a id="__codelineno-78-21" name="__codelineno-78-21" href="#__codelineno-78-21"></a>pnpm<span class="w"> </span>build
+</span><span id="__span-78-22"><a id="__codelineno-78-22" name="__codelineno-78-22" href="#__codelineno-78-22"></a>pnpm<span class="w"> </span>start
+</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th>配置</th>
+<th>位置</th>
+<th>写法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>构建脚本放行</td>
+<td><code>pnpm-workspace.yaml</code></td>
+<td><code>allowBuilds: { electron: true }</code></td>
+</tr>
+<tr>
+<td>平铺依赖</td>
+<td><code>pnpm-workspace.yaml</code></td>
+<td><code>nodeLinker: hoisted</code></td>
+</tr>
+<tr>
+<td>包管理器版本</td>
+<td><code>package.json</code></td>
+<td><code>packageManager: "pnpm@12.9.1"</code></td>
+</tr>
+<tr>
+<td>版本策略</td>
+<td><code>package.json</code></td>
+<td><code>devEngines.packageManager</code> 对象形式</td>
+</tr>
+<tr>
+<td>Electron 镜像</td>
+<td>环境变量</td>
+<td><code>ELECTRON_MIRROR=https://npmmirror.com/mirrors/electron/</code></td>
+</tr>
+<tr>
+<td>root 沙盒</td>
+<td>启动参数</td>
+<td><code>--no-sandbox</code> / <code>ELECTRON_DISABLE_SANDBOX=1</code> / <code>--noSandbox</code></td>
+</tr>
+<tr>
+<td>共享内存</td>
+<td>启动参数</td>
+<td><code>/dev/shm</code> 偏小时使用 <code>--disable-dev-shm-usage</code></td>
+</tr>
+<tr>
+<td>ESM 主进程</td>
+<td><code>src/main.js</code></td>
+<td><code>fileURLToPath(import.meta.url)</code> 重建 <code>__dirname</code></td>
+</tr>
+<tr>
+<td>沙盒 preload</td>
+<td><code>src/preload.cjs</code></td>
+<td>CommonJS 后缀，<code>contextBridge</code> 暴露 API</td>
+</tr>
+</tbody>
+</table>
+<p>核心顺序可以概括为：确认 Node 与 pnpm 版本，写 <code>pnpm-workspace.yaml</code>，安装精确版本的 Electron，按路径生成主进程与页面，启动并检查 WSLg 窗口。三张截图与各节目录树保留了每条路径的结果；下一步可以阅读 <a href="../01-electron-vscode/">01-electron-vscode.md</a>，看 Code OSS / VS Code 如何组织同量级的 Electron 项目。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 <a href="https://godjustwantaname.github.io">jialecai</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/godjustwantaname" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["header.autohide", "content.code.copy", "content.code.select", "content.code.annotate", "content.footnote.tooltips", "content.tooltips"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/katex.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
+      
+        <script src="https://unpkg.com/l2d-widget/dist/index.min.js"></script>
+      
+        <script src="../../javascripts/l2d-init.js"></script>
+      
+    
+  </body>
+</html>
